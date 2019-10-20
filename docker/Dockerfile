@@ -5,7 +5,7 @@ WORKDIR /root
 RUN apt-get update && apt-get upgrade -y && apt-get autoremove -y --purge && \
     ln -fs /usr/share/zoneinfo/Europe/Dublin /etc/localtime && \
     apt-get install -y  libncurses5-dev zlib1g-dev git-core make gcc g++ build-essential && \
-    apt-get install -y  flex bison binutils unzip python bzip2 libssl-dev locales && \
+    apt-get install -y  flex bison rsync binutils unzip python bzip2 libssl-dev locales && \
     apt-get install -y  libc6-dev fakeroot bin86 kernel-package udev hdparm libncursesw5-dev xmlto
 
 
