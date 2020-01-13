@@ -1,4 +1,5 @@
-# The docker__linux-thinkpad-x1-20kh-ct01ww
+# Docker: linux-thinkpad-x1-20kh-ct01ww
+
 
 A docker image/container description for building the kernel for my thinkpad x1 carbon (20kh ct01ww)
 
@@ -6,8 +7,21 @@ A docker image/container description for building the kernel for my thinkpad x1 
 ## Build
 
 ```
-$ time docker build --no-cache --tag v5.3 -t rubuschl/thinkpad-kernel .
-$ time docker run -ti --rm -v $PWD/output:/mnt rubuschl/thinkpad-kernel
+$ cd ./docker
+
+$ time docker build --no-cache --build-arg USER=$USER -t rubuschl/linux:$(date +%Y%m%d%H%M%S) .
+    10m...
+```
+
+
+Build the kernel, obtain the tag number from docker images
+
+```
+$ docker images
+    REPOSITORY               TAG                 IMAGE ID            CREATED             SIZE
+    rubuschl/linux           20191203212934      70dce0bd5619        15 minutes ago      612MB
+
+$ time docker run --rm -ti -v $PWD/output:/mnt rubuschl/linux:20191203212934
 ```
 
 
