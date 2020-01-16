@@ -14,7 +14,7 @@ $ time docker build --no-cache --build-arg USER=$USER -t rubuschl/linux:$(date +
 ```
 
 
-Build the kernel, obtain the tag number from docker images
+Build the kernel, obtain the tag number from docker images as below
 
 ```
 $ docker images
@@ -25,7 +25,7 @@ $ time docker run --rm -ti --user=$USER:$USER --workdir=/home/$USER -v $PWD/outp
 ```
 
 
-## Debug
+## Debug / Develop
 
 ```
 $ docker run -ti rubuschl/thinkpad-kernel /bin/bash
