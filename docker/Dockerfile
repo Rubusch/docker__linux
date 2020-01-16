@@ -1,4 +1,4 @@
-FROM ubuntu:19.04
+FROM ubuntu:19.10
 MAINTAINER Lothar Rubusch <lotophagon@protonmail.com>
 WORKDIR /root
 ENV DEBIAN_FRONTEND=noninteractive
@@ -10,6 +10,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 ARG USER=""
 
 ## the branch
+#ARG BRANCH="lothar/kconfig"
 ARG BRANCH="lothar/develop"
 
 
