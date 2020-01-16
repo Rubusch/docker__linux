@@ -81,9 +81,9 @@ RUN cd /home/$USER && sudo su $USER -c "git clone -j4 --depth=1 --branch $BRANCH
 ## prepare paths
 RUN sudo su $USER -c "mkdir -p /home/$USER/linux/output"
 
-## documentation requirements
-RUN cd /home/$USER/linux && sudo su $USER -c "/usr/bin/virtualenv sphinx_1.7.9"
-RUN cd /home/$USER/linux && sudo su $USER -c "source sphinx_1.7.9/bin/activate && pip install -r ./Documentation/sphinx/requirements.txt && deactivate"
+## documentation requirements (probably not needed due to package 'python3-sphinx')
+#RUN cd /home/$USER/linux && sudo su $USER -c "/usr/bin/virtualenv sphinx_1.7.9"
+#RUN cd /home/$USER/linux && sudo su $USER -c "source sphinx_1.7.9/bin/activate && pip install -r ./Documentation/sphinx/requirements.txt && deactivate"
 
 ## reset permissions
 RUN chown $USER:$USER -R /home/$USER/linux/output
