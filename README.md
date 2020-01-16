@@ -1,7 +1,7 @@
-# Docker: linux-thinkpad-x1-20kh-ct01ww
+# Docker: linux
 
 
-A docker image/container description for building the kernel for my thinkpad x1 carbon (20kh ct01ww)
+A docker image/container description for building the kernel
 
 
 ## Build
