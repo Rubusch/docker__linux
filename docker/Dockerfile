@@ -47,6 +47,16 @@ RUN apt-get install -y  \
     vim \
     sudo
 
+## for building documentation targets
+RUN apt-get install -y  \
+    imagemagick \
+    graphviz \
+    dvipng \
+    fonts-noto-cjk \
+    latexmk \
+    librsvg2-bin \
+    virtualenv \
+    python3-sphinx
 
 ################################################################################
 ## locale settings
@@ -70,6 +80,10 @@ RUN cd /home/$USER && sudo su $USER -c "git clone -j4 --depth=1 --branch $BRANCH
 
 ## prepare paths
 RUN sudo su $USER -c "mkdir -p /home/$USER/linux/output"
+
+## documentation requirements
+RUN cd /home/$USER/linux && sudo su $USER -c "/usr/bin/virtualenv sphinx_1.7.9"
+RUN cd /home/$USER/linux && sudo su $USER -c "source sphinx_1.7.9/bin/activate && pip install -r ./Documentation/sphinx/requirements.txt && deactivate"
 
 ## reset permissions
 RUN chown $USER:$USER -R /home/$USER/linux/output
