@@ -21,7 +21,7 @@ $ docker images
     REPOSITORY               TAG                 IMAGE ID            CREATED             SIZE
     rubuschl/linux           20191203212934      70dce0bd5619        15 minutes ago      612MB
 
-$ time docker run --rm -ti -v $PWD/output:/mnt rubuschl/linux:20191203212934
+$ time docker run -ti --rm -v $PWD/output:/home/$USER/output --user=$USER:$USER --workdir=/home/$USER rubuschl/linux:20191203212934
 ```
 
 
