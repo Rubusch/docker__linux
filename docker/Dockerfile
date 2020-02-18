@@ -66,11 +66,7 @@ RUN sed -i '/%sudo/s/.*/%sudo   ALL=NOPASSWD: ALL/' /etc/sudoers
 
 ################################################################################
 ## get sources
-RUN cd /home/$USER && git clone -j4 --depth=1 --branch $KVERSION https://github.com/Rubusch/linux.git
-
-## reset permissions
-RUN chown $USER:$USER -R /home/$USER
-
+RUN cd /home/$USER && sudo su $USER -c "git clone -j4 --depth=1 --branch $KVERSION https://github.com/Rubusch/linux.git"
 
 ################################################################################
 ## command mode
