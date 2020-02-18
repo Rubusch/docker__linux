@@ -15,14 +15,9 @@ ENV LANG en_US.UTF-8
 ENV LANGUAGE en_US.UTF-8
 ENV LC_ALL en_US.UTF-8
 
-#ENV BUILDDISTRO 'debian'
-#ENV BUILDARCH 'amd64'
-
-
 ## get sources
-RUN export KVERSION=v5.3 && \
-    git clone -j4 --depth=1 --branch $KVERSION https://github.com/Rubusch/linux.git && \
-    git clone -j4 --depth=1 --branch $KVERSION https://github.com/Rubusch/linux-defconfigs.git
+RUN export KVERSION="lothar/v5.5" && \
+    git clone -j4 --depth=1 --branch $KVERSION https://github.com/Rubusch/linux.git
 
 ## copy build.sh
 COPY build.sh /root/build.sh
