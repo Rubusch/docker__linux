@@ -10,8 +10,8 @@ ENV DEBIAN_FRONTEND=noninteractive
 ARG USER=""
 
 ## the branch
-ARG KVERSION="lothar/v5.5-thinkpad-x1"
-
+ARG KVERSION="v5.5"
+ARG KDEFCONFIG_BRANCH="lothar/${KVERSION}-thinkpad-x1"
 
 ################################################################################
 ## set up apt fully functional
@@ -67,6 +67,12 @@ RUN sed -i '/%sudo/s/.*/%sudo   ALL=NOPASSWD: ALL/' /etc/sudoers
 ################################################################################
 ## get sources
 RUN cd /home/$USER && sudo su $USER -c "git clone -j4 --depth=1 --branch $KVERSION https://github.com/Rubusch/linux.git"
+
+## defconfigs
+RUN cd /home/$USER && sudo su $USER -c "git clone -j4 --depth=1 --branch $KDEFCONFIG_BRANCH https://github.com/Rubusch/linux-defconfigs.git"
+
+## copy defconfigs
+COPY /home/$USER/linux-defconfigs/arch /home/$USER/linux/
 
 ################################################################################
 ## command mode
