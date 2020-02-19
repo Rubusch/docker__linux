@@ -2,10 +2,10 @@
 export KDEFCONFIG=x86_64__v5.5__thinkpad-x1_6th-gen_20kh-ct01ww_defconfig
 export MY_HOME="/home/$(whoami)"
 
-cd linux
+cd ${MY_HOME}/linux
 make clean
 make $KDEFCONFIG
-sudo make-kpkg -j16 kernel-image modules-image kernel-headers --initrd
+make deb-pkg
 
 sudo chown $(whoami).$(whoami) -R ${MY_HOME}/output
 cp -arvf ${MY_HOME}/*.deb ${MY_HOME}/output/
