@@ -67,6 +67,7 @@ RUN sed -i '/%sudo/s/.*/%sudo   ALL=NOPASSWD: ALL/' /etc/sudoers
 ################################################################################
 ## get sources
 RUN cd /home/$USER && sudo su $USER -c "git clone -j4 --depth=1 --branch $KVERSION https://github.com/Rubusch/linux.git"
+RUN cd /home/$USER/linux && sudo su $USER -c "git checkout -b $KDEFCONFIG_BRANCH"
 
 ## defconfigs
 RUN cd /home/$USER && sudo su $USER -c "git clone -j4 --depth=1 --branch $KDEFCONFIG_BRANCH https://github.com/Rubusch/linux-defconfigs.git"
