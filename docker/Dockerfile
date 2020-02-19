@@ -10,7 +10,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 ARG USER=""
 
 ## the branch
-ARG KVERSION="lothar/v5.5"
+ARG KVERSION="lothar/v5.5-thinkpad-x1"
 
 
 ################################################################################
