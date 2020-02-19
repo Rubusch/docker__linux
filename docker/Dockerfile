@@ -20,7 +20,7 @@ ENV LC_ALL en_US.UTF-8
 
 
 ## get sources
-RUN export KVERSION=v5.3 && \
+RUN export KVERSION=lothar/v5.3-thinkpad-x1 && \
     git clone -j4 --depth=1 --branch $KVERSION https://github.com/Rubusch/linux.git && \
     git clone -j4 --depth=1 --branch $KVERSION https://github.com/Rubusch/linux-defconfigs.git
 
