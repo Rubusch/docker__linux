@@ -31,3 +31,9 @@ $ time docker run -ti --rm -v $PWD/output:/home/$USER/output --user=$USER:$USER 
 $ docker run -ti rubuschl/thinkpad-kernel /bin/bash
 docker$ ./build.sh
 ```
+
+
+
+## Installation
+
+First install the linux-headers, then the linux-image.
