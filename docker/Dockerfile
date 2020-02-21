@@ -10,8 +10,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 ARG USER=""
 
 ## the branch
-#ARG BRANCH="lothar/kconfig"
-ARG BRANCH="lothar/develop"
+ARG BRANCH="lothar/documentation"
 
 
 ################################################################################
