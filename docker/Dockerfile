@@ -82,17 +82,18 @@ RUN sed -i '/%sudo/s/.*/%sudo   ALL=NOPASSWD: ALL/' /etc/sudoers
 
 ################################################################################
 ## get sources
-RUN cd /home/$USER && sudo su $USER -c "git clone -j4 --depth=1 --branch $BRANCH https://github.com/Rubusch/linux.git linux"
+#RUN cd /home/$USER && sudo su $USER -c "git clone -j4 --depth=1 --branch $BRANCH https://github.com/Rubusch/linux.git linux"
+RUN cd /home/$USER && sudo su $USER -c "git clone -b staging-testing git://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git linux"
 
 ## prepare paths
-RUN sudo su $USER -c "mkdir -p /home/$USER/linux/output"
+RUN sudo su $USER -c "mkdir -p /home/$USER/output"
 
 ## documentation requirements (probably not needed due to package 'python3-sphinx')
 #RUN cd /home/$USER/linux && sudo su $USER -c "/usr/bin/virtualenv sphinx_1.7.9"
 #RUN cd /home/$USER/linux && sudo su $USER -c "source sphinx_1.7.9/bin/activate && pip install -r ./Documentation/sphinx/requirements.txt && deactivate"
 
 ## reset permissions
-RUN chown $USER:$USER -R /home/$USER/linux/output
+RUN chown $USER:$USER -R /home/$USER/output
 
 
 ################################################################################
