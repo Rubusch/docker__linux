@@ -24,7 +24,7 @@ $ docker images
 Login into the docker container  
 
 ```
-$ docker run --rm -ti --user=$USER:$USER --workdir=/home/$USER -v $PWD/output:/mnt rubuschl/linux:20191203212934 /bin/bash
+$ docker run --rm -ti --user=$USER:$USER --workdir=/home/$USER -v $PWD/output:/home/$USER/output rubuschl/linux:20191203212934 /bin/bash
 ```
 
 Make sure to backup your work also outside the container.  
