@@ -1,4 +1,4 @@
-FROM ubuntu:19.10
+FROM debian:10
 MAINTAINER Lothar Rubusch <lotophagon@protonmail.com>
 WORKDIR /root
 ENV DEBIAN_FRONTEND=noninteractive
@@ -18,33 +18,23 @@ ARG BRANCH="lothar/develop"
 ## set up apt fully functional
 RUN apt-get update && apt-get upgrade -y && apt-get autoremove -y --purge
 RUN apt-get install -y  \
-    libncurses5-dev \
     zlib1g-dev \
-    git-core \
-    make \
-    gcc \
     g++ \
     build-essential \
-    flex \
-    bison \
     rsync \
     binutils \
     unzip \
     python \
     bzip2 \
-    libssl-dev \
     locales \
     libc6-dev \
     fakeroot \
     bin86 \
-    kernel-package \
     udev \
     hdparm \
-    libncursesw5-dev \
     xmlto \
     tree \
     colordiff \
-    vim \
     sudo
 
 ## for building documentation targets
@@ -57,6 +47,22 @@ RUN apt-get install -y  \
     librsvg2-bin \
     virtualenv \
     python3-sphinx
+
+## for building development environment
+RUN apt-get install -y  \
+    vim \
+    libncurses5-dev \
+    gcc \
+    make \
+    git \
+    exuberant-ctags \
+    libssl-dev \
+    bison \
+    flex \
+    libelf-dev \
+    bc \
+    tig \
+    aptitude
 
 ################################################################################
 ## locale settings
