@@ -1,7 +1,7 @@
 # Docker: linux
 
 
-A docker image/container description for building the kernel
+A docker image/container description for kernel development  
 
 
 ## Build
@@ -13,21 +13,19 @@ $ time docker build --no-cache --build-arg USER=$USER -t rubuschl/linux:$(date +
     10m...
 ```
 
-
-Build the kernel, obtain the tag number from docker images as below
+Obtain the tag number from docker images as below  
 
 ```
 $ docker images
     REPOSITORY               TAG                 IMAGE ID            CREATED             SIZE
     rubuschl/linux           20191203212934      70dce0bd5619        15 minutes ago      612MB
-
-$ time docker run --rm -ti --user=$USER:$USER --workdir=/home/$USER -v $PWD/output:/mnt rubuschl/linux:20191203212934
 ```
 
-
-## Debug / Develop
+Login into the docker container  
 
 ```
-$ docker run -ti rubuschl/thinkpad-kernel /bin/bash
-docker$ ./build.sh
+$ docker run --rm -ti --user=$USER:$USER --workdir=/home/$USER -v $PWD/output:/mnt rubuschl/linux:20191203212934 /bin/bash
 ```
+
+Make sure to backup your work also outside the container.  
+
