@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+    linux:
+        container_name: linux
+        image: ${USER}/linux
+        build:
+            context: build_context
+            dockerfile: Dockerfile
+            args:
+                USER: ${USER}
+        user: ${USER}            ## docker run --user=$USER
+        stdin_open: true         ## docker run -i
+        tty: true                ## docker run -t
+        #privileged: true
+
+        environment:
+          - USER
+
+        volumes:
+          - ~/.gitconfig:/home/${USER}/.gitconfig
+          - ~/.ssh:/home/${USER}/.ssh
+          - ./linux:/home/$USER/linux    ## folder does not need to be around
+          - type: bind
+            source: ./build_configs      ## folder must be around
+            target: /home/$USER/configs

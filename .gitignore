@@ -4,4 +4,5 @@
 *.orig
 
 ## ignore output folder
-output
+build_opt
+linux
