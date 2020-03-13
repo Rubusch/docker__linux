@@ -97,6 +97,20 @@ RUN chown $USER:$USER -R /home/$USER/output
 
 
 ################################################################################
+## set up tools
+
+## TODO vim config
+
+
+## TODO mutt config
+
+
+## git config
+RUN cd /home/$USER && sudo su $USER -c "git config --global user.name \"Lothar Rubusch\""
+RUN cd /home/$USER && sudo su $USER -c "git config --global user.email lotophagon@protonmail.com"
+
+
+################################################################################
 ## command mode
 COPY build.sh /usr/local/bin/build.sh
 CMD ["/bin/bash", "/usr/local/bin/build.sh"]
