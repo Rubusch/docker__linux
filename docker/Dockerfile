@@ -62,7 +62,8 @@ RUN apt-get install -y  \
     libelf-dev \
     bc \
     tig \
-    aptitude
+    aptitude \
+    emacs
 
 ################################################################################
 ## locale settings
@@ -99,11 +100,11 @@ RUN chown $USER:$USER -R /home/$USER/output
 ################################################################################
 ## set up tools
 
-## TODO vim config
+## vim config
+RUN cd /home/$USER && sudo su $USER -c "rm -f /home/$USER/.vimrc" && sudo su $USER -c "ln -s /home/$USER/output/.vimrc /home/$USER/"
 
-
-## TODO mutt config
-
+## emacs config
+RUN cd /home/$USER && sudo su $USER -c "rm -f /home/$USER/.emacs" && sudo su $USER -c "ln -s /home/$USER/output/.emacs /home/$USER/"
 
 ## git config
 RUN cd /home/$USER && sudo su $USER -c "git config --global user.name \"Lothar Rubusch\""
