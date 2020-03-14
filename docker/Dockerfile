@@ -56,10 +56,16 @@ RUN apt-get install -y  \
     bison \
     flex \
     libelf-dev \
-    bc \
-    tig \
+    bc
+
+## my add ons for patch development
+RUN apt-get install -y  \
     aptitude \
-    emacs
+    tig \
+    emacs-nox \
+    codespell \
+    python-ply \
+    python-git
 
 ################################################################################
 ## locale settings
