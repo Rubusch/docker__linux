@@ -9,10 +9,6 @@ ENV DEBIAN_FRONTEND=noninteractive
 ## in case docker complains for a not set USER, perhaps you forgot to use --build-arg USER=$USER
 ARG USER=""
 
-## the branch
-#ARG BRANCH="lothar/kconfig"
-ARG BRANCH="lothar/develop"
-
 
 ################################################################################
 ## set up apt fully functional
@@ -83,32 +79,41 @@ RUN sed -i '/%sudo/s/.*/%sudo   ALL=NOPASSWD: ALL/' /etc/sudoers
 
 ################################################################################
 ## get sources
-#RUN cd /home/$USER && sudo su $USER -c "git clone -j4 --depth=1 --branch $BRANCH https://github.com/Rubusch/linux.git linux"
-RUN cd /home/$USER && sudo su $USER -c "git clone -b staging-testing git://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git linux"
+## NOTE: this container will obtain sources in manually executed script (later), sources shall be shared between container and outside
 
 ## prepare paths
-RUN sudo su $USER -c "mkdir -p /home/$USER/output"
+RUN sudo su $USER -c "mkdir -p /home/$USER/linux"
+RUN sudo su $USER -c "mkdir -p /home/$USER/configs"
 
 ## documentation requirements (probably not needed due to package 'python3-sphinx')
 #RUN cd /home/$USER/linux && sudo su $USER -c "/usr/bin/virtualenv sphinx_1.7.9"
 #RUN cd /home/$USER/linux && sudo su $USER -c "source sphinx_1.7.9/bin/activate && pip install -r ./Documentation/sphinx/requirements.txt && deactivate"
 
 ## reset permissions
-RUN chown $USER:$USER -R /home/$USER/output
+RUN chown $USER:$USER -R /home/$USER/linux
+RUN chown $USER:$USER -R /home/$USER/configs
 
 
 ################################################################################
 ## set up tools
 
+## bash config
+RUN cd /home/$USER && sudo su $USER -c "rm -f /home/$USER/.bashrc" && sudo su $USER -c "ln -s /home/$USER/configs/.bashrc /home/$USER/"
+
 ## vim config
-RUN cd /home/$USER && sudo su $USER -c "rm -f /home/$USER/.vimrc" && sudo su $USER -c "ln -s /home/$USER/output/.vimrc /home/$USER/"
+RUN cd /home/$USER && sudo su $USER -c "rm -f /home/$USER/.vimrc" && sudo su $USER -c "ln -s /home/$USER/configs/.vimrc /home/$USER/"
 
 ## emacs config
-RUN cd /home/$USER && sudo su $USER -c "rm -f /home/$USER/.emacs" && sudo su $USER -c "ln -s /home/$USER/output/.emacs /home/$USER/"
+RUN cd /home/$USER && sudo su $USER -c "rm -f /home/$USER/.emacs" && sudo su $USER -c "ln -s /home/$USER/configs/.emacs /home/$USER/"
 
 ## git config
 RUN cd /home/$USER && sudo su $USER -c "git config --global user.name \"Lothar Rubusch\""
 RUN cd /home/$USER && sudo su $USER -c "git config --global user.email lotophagon@protonmail.com"
+RUN cd /home/$USER && sudo su $USER -c "git config --global alias.st status"
+RUN cd /home/$USER && sudo su $USER -c "git config --global alias.ci commit"
+RUN cd /home/$USER && sudo su $USER -c "git config --global alias.co checkout"
+RUN cd /home/$USER && sudo su $USER -c "git config --global alias.br branch"
+
 
 
 ################################################################################
