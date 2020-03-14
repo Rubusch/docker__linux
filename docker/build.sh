@@ -14,7 +14,7 @@ cd ${HOME}
 
 if [[ -d "${SOURCES}/.git" ]]; then
   cd linux
-  git fetch --all origin
+  git fetch --all
 else
   #git clone -j4 --depth=1 --branch $BRANCH https://github.com/Rubusch/linux.git linux
   git clone -j4 --depth=1 --branch staging-testing git://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git linux
