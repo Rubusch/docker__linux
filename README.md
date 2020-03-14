@@ -26,7 +26,7 @@ $ docker images
 Obtain kernel sources or update
 
 ```
-$ docker run --rm -ti --user=$USER:$USER --workdir=/home/$USER -v $PWD/configs:/home/$USER/configs -v $PWD/linux:/home/$USER/linux rubuschl/linux:20191203212934
+$ time docker run --rm -ti --user=$USER:$USER --workdir=/home/$USER -v $PWD/configs:/home/$USER/configs -v $PWD/linux:/home/$USER/linux rubuschl/linux:20191203212934
 ```
 
 
