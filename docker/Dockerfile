@@ -1,5 +1,5 @@
 FROM debian:10
-MAINTAINER Lothar Rubusch <lotophagon@protonmail.com>
+MAINTAINER Lothar Rubusch <l.rubusch@gmail.com>
 WORKDIR /root
 ENV DEBIAN_FRONTEND=noninteractive
 
@@ -69,14 +69,14 @@ RUN apt-get install -y  \
 
 ################################################################################
 ## locale settings
-
-## locale-hack, needed for debian since locale-gen <arg> seems not to work
-RUN "sed -i '/^#.* en_US.UTF-8.* /s/^#//' /etc/locale.gen"
-
 RUN locale-gen
 ENV LANG en_US.UTF-8
 ENV LANGUAGE en_US:en
 ENV LC_ALL en_US.UTF-8
+
+## locale-hack, needed for debian since locale-gen <arg> seems not to work
+RUN sed -i '/^#.* en_US.UTF-8.* /s/^#//' /etc/locale.gen
+RUN locale-gen
 
 
 ################################################################################
@@ -117,12 +117,15 @@ RUN cd /home/$USER && sudo su $USER -c "rm -f /home/$USER/.emacs" && sudo su $US
 
 ## git config
 RUN cd /home/$USER && sudo su $USER -c "git config --global user.name \"Lothar Rubusch\""
-RUN cd /home/$USER && sudo su $USER -c "git config --global user.email lotophagon@protonmail.com"
+RUN cd /home/$USER && sudo su $USER -c "git config --global user.email l.rubusch@gmail.com"
 RUN cd /home/$USER && sudo su $USER -c "git config --global alias.st status"
 RUN cd /home/$USER && sudo su $USER -c "git config --global alias.ci commit"
 RUN cd /home/$USER && sudo su $USER -c "git config --global alias.co checkout"
 RUN cd /home/$USER && sudo su $USER -c "git config --global alias.br branch"
 
+## codespell: dictionary fix
+RUN mkdir -p /usr/share/codespell
+RUN ln -s /usr/lib/python3/dist-packages/codespell_lib/data/dictionary.txt /usr/share/codespell/dictionary.txt
 
 
 ################################################################################
