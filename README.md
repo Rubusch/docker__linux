@@ -9,7 +9,7 @@ A docker image for kernel patch development. A ``build.sh`` script will in a sec
 ```
 $ cd ./docker
 
-$ time docker build --no-cache --build-arg USER=$USER -t rubuschl/linux:$(date +%Y%m%d%H%M%S) .
+$ time docker build --no-cache --build-arg USER=$USER --build-arg GMAIL_USER="<My Name>" --build-arg GMAIL=<mail@gmail.com> --build-arg GMAIL_PASSW=<gmail password> -t rubuschl/linux:$(date +%Y%m%d%H%M%S) .
     10m...
 ```
 

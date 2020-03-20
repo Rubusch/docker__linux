@@ -9,6 +9,15 @@ ENV DEBIAN_FRONTEND=noninteractive
 ## in case docker complains for a not set USER, perhaps you forgot to use --build-arg USER=$USER
 ARG USER=""
 
+## gmail user
+ARG GMAIL_USER=""
+
+## email address at gmail
+ARG GMAIL=""
+
+## email password for that address
+ARG GMAIL_PASSW=""
+
 
 ################################################################################
 ## set up apt fully functional
@@ -50,7 +59,7 @@ RUN apt-get install -y  \
     libncurses5-dev \
     gcc \
     make \
-    git \
+    git-all \
     exuberant-ctags \
     libssl-dev \
     bison \
@@ -122,6 +131,15 @@ RUN cd /home/$USER && sudo su $USER -c "git config --global alias.st status"
 RUN cd /home/$USER && sudo su $USER -c "git config --global alias.ci commit"
 RUN cd /home/$USER && sudo su $USER -c "git config --global alias.co checkout"
 RUN cd /home/$USER && sudo su $USER -c "git config --global alias.br branch"
+
+RUN cd /home/$USER && sudo su $USER -c "git config --global sendemail.from \"$GMAIL_USER <$GMAIL>\""
+RUN cd /home/$USER && sudo su $USER -c "git config --global sendemail.smtpserver smtp.gmail.com"
+RUN cd /home/$USER && sudo su $USER -c "git config --global sendemail.smtpuser $GMAIL"
+RUN cd /home/$USER && sudo su $USER -c "git config --global sendemail.smtpencryption tls"
+RUN cd /home/$USER && sudo su $USER -c "git config --global sendemail.smtppass $GMAIL_PASSW"
+RUN cd /home/$USER && sudo su $USER -c "git config --global sendemail.chainreplyto false"
+RUN cd /home/$USER && sudo su $USER -c "git config --global sendemail.smtpserverport 587"
+
 
 ## codespell: dictionary fix
 RUN mkdir -p /usr/share/codespell
