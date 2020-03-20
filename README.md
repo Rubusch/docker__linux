@@ -1,4 +1,4 @@
-# Docker: linux
+# Docker: linux for patches
 
 
 A docker image for kernel patch development. A ``build.sh`` script will in a second step clone a staging tree. ``configs`` and ``staging`` tree will be setup outside the container, but shared with the container.  
@@ -15,7 +15,7 @@ The setup needs a gmail email address for patch delivery via ``git send-email``.
 ```
 $ cd ./docker
 
-$ time docker build --no-cache --build-arg USER=$USER --build-arg GMAIL_USER="<gmail user name>" --build-arg GMAIL=<email@gmail.com> --build-arg GMAIL_PASSW=<gmail password> -t rubuschl/linux:$(date +%Y%m%d%H%M%S) .
+$ time docker build --no-cache --build-arg USER=$USER --build-arg GMAIL_USER="<gmail user name>" --build-arg GMAIL=<email@gmail.com> --build-arg GMAIL_PASSW=<gmail password> -t rubuschl/linuxpatches:$(date +%Y%m%d%H%M%S) .
     10m...
 ```
 
@@ -26,13 +26,13 @@ Obtain the tag number from docker images as below
 ```
 $ docker images
     REPOSITORY               TAG                 IMAGE ID            CREATED             SIZE
-    rubuschl/linux           20191203212934      70dce0bd5619        15 minutes ago      612MB
+    rubuschl/linuxpatches    20191203212934      70dce0bd5619        15 minutes ago      612MB
 ```
 
 Obtain kernel sources or update
 
 ```
-$ time docker run --rm -ti --user=$USER:$USER --workdir=/home/$USER -v $PWD/configs:/home/$USER/configs -v $PWD/linux:/home/$USER/linux rubuschl/linux:20191203212934
+$ time docker run --rm -ti --user=$USER:$USER --workdir=/home/$USER -v $PWD/configs:/home/$USER/configs -v $PWD/linux:/home/$USER/linux rubuschl/linuxpatches:20191203212934
 ```
 
 
@@ -41,7 +41,7 @@ $ time docker run --rm -ti --user=$USER:$USER --workdir=/home/$USER -v $PWD/conf
 Login into the docker container  
 
 ```
-$ docker run --rm -ti --user=$USER:$USER --workdir=/home/$USER -v $PWD/configs:/home/$USER/configs -v $PWD/linux:/home/$USER/linux rubuschl/linux:20191203212934 /bin/bash
+$ docker run --rm -ti --user=$USER:$USER --workdir=/home/$USER -v $PWD/configs:/home/$USER/configs -v $PWD/linux:/home/$USER/linux rubuschl/linuxpatches:20191203212934 /bin/bash
 ```
 
 Obtain the current config as a starting point  
