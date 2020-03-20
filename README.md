@@ -6,10 +6,16 @@ A docker image for kernel patch development. A ``build.sh`` script will in a sec
 
 ## Build
 
+The setup needs a gmail email address for patch delivery via ``git send-email``. Many other email providers are possible in general, too  
+
+*NOTE* Replace _gmail user name_, _email@gmail.com_ and _gmail password_ with your gmail credentials  
+
+*NOTE* For the gamil password escape ``<`` and ``>`` i.e. write ``\<`` and ``\>``, in any case don't use quotes.  
+
 ```
 $ cd ./docker
 
-$ time docker build --no-cache --build-arg USER=$USER --build-arg GMAIL_USER="<My Name>" --build-arg GMAIL=<mail@gmail.com> --build-arg GMAIL_PASSW=<gmail password> -t rubuschl/linux:$(date +%Y%m%d%H%M%S) .
+$ time docker build --no-cache --build-arg USER=$USER --build-arg GMAIL_USER="<gmail user name>" --build-arg GMAIL=<email@gmail.com> --build-arg GMAIL_PASSW=<gmail password> -t rubuschl/linux:$(date +%Y%m%d%H%M%S) .
     10m...
 ```
 
