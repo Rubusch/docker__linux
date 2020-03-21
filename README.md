@@ -8,9 +8,9 @@ A docker image for patch development. A ``build.sh`` script will in a second ste
 
 The setup needs a gmail email address for patch delivery via ``git send-email``. Many other email providers are possible in general, too  
 
-*NOTE* Replace _gmail user name_, _email@gmail.com_ and _gmail password_ with your gmail credentials  
+**NOTE** Replace ``gmail user name``, ``email@gmail.com`` and ``gmail password`` with your gmail credentials  
 
-*NOTE* For the gamil password escape ``<`` and ``>`` i.e. write ``\\\<`` and ``\\\>``, in any case don't use quotes.  
+**NOTE** For the gamil password escape ``<`` and ``>`` i.e. write ``\\\<`` and ``\\\>``, in any case don't use quotes.  
 
 ```
 $ cd ./docker
