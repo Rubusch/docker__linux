@@ -1,7 +1,7 @@
 # Docker: linux for patches
 
 
-A docker image for kernel patch development. A ``build.sh`` script will in a second step clone a staging tree. ``configs`` and ``staging`` tree will be setup outside the container, but shared with the container.  
+A docker image for patch development. A ``build.sh`` script will in a second step clone a staging tree. ``configs`` and ``staging`` tree will be setup outside the container, but shared with the container.  
 
 
 ## Build
@@ -29,7 +29,7 @@ $ docker images
     rubuschl/linuxpatches    20191203212934      70dce0bd5619        15 minutes ago      612MB
 ```
 
-Obtain kernel sources or update
+Obtain sources or update
 
 ```
 $ time docker run --rm -ti --user=$USER:$USER --workdir=/home/$USER -v $PWD/configs:/home/$USER/configs -v $PWD/linux:/home/$USER/linux rubuschl/linuxpatches:20191203212934
@@ -56,7 +56,7 @@ Generate _TAGS_ file
 $ make tags
 ```
 
-Build the kernel for debian as follows  
+Build the for debian as follows  
 
 ```
 $ make -j8 deb-pkg all
