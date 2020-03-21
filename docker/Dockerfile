@@ -136,7 +136,7 @@ RUN cd /home/$USER && sudo su $USER -c "git config --global sendemail.from \"$GM
 RUN cd /home/$USER && sudo su $USER -c "git config --global sendemail.smtpserver smtp.gmail.com"
 RUN cd /home/$USER && sudo su $USER -c "git config --global sendemail.smtpuser $GMAIL"
 RUN cd /home/$USER && sudo su $USER -c "git config --global sendemail.smtpencryption tls"
-RUN cd /home/$USER && sudo su $USER -c "git config --global sendemail.smtppass \'$GMAIL_PASSW\'"
+RUN cd /home/$USER && sudo su $USER -c "git config --global sendemail.smtppass $GMAIL_PASSW"
 RUN cd /home/$USER && sudo su $USER -c "git config --global sendemail.chainreplyto false"
 RUN cd /home/$USER && sudo su $USER -c "git config --global sendemail.smtpserverport 587"
 
