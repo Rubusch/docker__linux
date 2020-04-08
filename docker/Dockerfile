@@ -51,7 +51,8 @@ RUN apt-get install -y  \
     latexmk \
     librsvg2-bin \
     virtualenv \
-    python3-sphinx
+    python3-sphinx \
+    python3-sphinx-rtd-theme
 
 ## for building development environment
 RUN apt-get install -y  \
