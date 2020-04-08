@@ -10,7 +10,7 @@ The setup needs a gmail email address for patch delivery via ``git send-email``.
 
 **NOTE** Replace ``gmail user name``, ``email@gmail.com`` and ``gmail password`` with your gmail credentials  
 
-**NOTE** For the gamil password escape ``<`` and ``>`` i.e. write ``\\\<`` and ``\\\>``, in any case don't use quotes.  
+**NOTE** For the gamil passwords containing ``<`` and ``>`` i.e. use escaped ``\\\<`` and ``\\\>``, in any case don't use quotes.  
 
 ```
 $ cd ./docker
