@@ -77,6 +77,7 @@ RUN apt-get install -y  \
     python-ply \
     python-git
 
+
 ################################################################################
 ## locale settings
 RUN locale-gen
@@ -126,8 +127,8 @@ RUN cd /home/$USER && sudo su $USER -c "rm -f /home/$USER/.vimrc" && sudo su $US
 RUN cd /home/$USER && sudo su $USER -c "rm -f /home/$USER/.emacs" && sudo su $USER -c "ln -s /home/$USER/configs/.emacs /home/$USER/"
 
 ## git config
-RUN cd /home/$USER && sudo su $USER -c "git config --global user.name \"Lothar Rubusch\""
-RUN cd /home/$USER && sudo su $USER -c "git config --global user.email l.rubusch@gmail.com"
+RUN cd /home/$USER && sudo su $USER -c "git config --global user.name \"$GMAIL_USER\""
+RUN cd /home/$USER && sudo su $USER -c "git config --global user.email $GMAIL"
 RUN cd /home/$USER && sudo su $USER -c "git config --global alias.st status"
 RUN cd /home/$USER && sudo su $USER -c "git config --global alias.ci commit"
 RUN cd /home/$USER && sudo su $USER -c "git config --global alias.co checkout"
@@ -140,7 +141,6 @@ RUN cd /home/$USER && sudo su $USER -c "git config --global sendemail.smtpencryp
 RUN cd /home/$USER && sudo su $USER -c "git config --global sendemail.smtppass $GMAIL_PASSW"
 RUN cd /home/$USER && sudo su $USER -c "git config --global sendemail.chainreplyto false"
 RUN cd /home/$USER && sudo su $USER -c "git config --global sendemail.smtpserverport 587"
-
 
 ## codespell: dictionary fix
 RUN mkdir -p /usr/share/codespell
