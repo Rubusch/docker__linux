@@ -29,7 +29,7 @@ $ docker images
     rubuschl/linuxpatches    20191203212934      70dce0bd5619        15 minutes ago      612MB
 ```
 
-Obtain sources or update
+Obtain sources or update on the container tag, e.g. **20191203212934**  
 
 ```
 $ time docker run --rm -ti --user=$USER:$USER --workdir=/home/$USER -v $PWD/configs:/home/$USER/configs -v $PWD/linux:/home/$USER/linux rubuschl/linuxpatches:20191203212934
@@ -38,7 +38,7 @@ $ time docker run --rm -ti --user=$USER:$USER --workdir=/home/$USER -v $PWD/conf
 
 ## Usage
 
-Login into the docker container  
+Login into the docker container, e.g. **20191203212934**  
 
 ```
 $ docker run --rm -ti --user=$USER:$USER --workdir=/home/$USER -v $PWD/configs:/home/$USER/configs -v $PWD/linux:/home/$USER/linux rubuschl/linuxpatches:20191203212934 /bin/bash
