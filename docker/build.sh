@@ -20,6 +20,7 @@ else
   #git clone -j4 --branch $BRANCH https://github.com/Rubusch/linux.git linux
   git clone -j4 --branch staging-testing git://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git linux
   #git clone --depth 1 git://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git
+  #git clone -j4 git://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git
 fi
 
 ## generate TAGS
