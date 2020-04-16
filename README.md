@@ -14,14 +14,19 @@ $ time docker build --no-cache --build-arg USER=$USER -t rubuschl/linux:$(date +
 ```
 
 
-Build the kernel, obtain the tag number from docker images
+Build the kernel, obtain the tag e.g. **20191203212934** from docker images  
 
 ```
 $ docker images
     REPOSITORY               TAG                 IMAGE ID            CREATED             SIZE
     rubuschl/linux           20191203212934      70dce0bd5619        15 minutes ago      612MB
+```
 
-$ time docker run -ti --rm -v $PWD/output:/home/$USER/output --user=$USER:$USER --workdir=/home/$USER rubuschl/linux:20191203212934
+
+start the container using the tag e.g. **20191203212934** for building the linux deb package  
+
+```
+$ time docker run -ti --rm -v $PWD/configs:/home/$USER/configs -v $PWD/output:/home/$USER/output --user=$USER:$USER --workdir=/home/$USER rubuschl/linux:20191203212934
 ```
 
 
