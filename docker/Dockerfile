@@ -64,13 +64,26 @@ RUN sed -i '/%sudo/s/.*/%sudo   ALL=NOPASSWD: ALL/' /etc/sudoers
 
 
 ################################################################################
+## set up configs
+RUN sudo su $USER -c "mkdir -p /home/$USER/configs"
+RUN chown $USER:$USER -R /home/$USER/configs
+
+## bash config
+RUN cd /home/$USER && sudo su $USER -c "rm -f /home/$USER/.bashrc" && sudo su $USER -c "ln -s /home/$USER/configs/.bashrc /home/$USER/"
+
+## vim config
+RUN cd /home/$USER && sudo su $USER -c "rm -f /home/$USER/.vimrc" && sudo su $USER -c "ln -s /home/$USER/configs/.vimrc /home/$USER/"
+
+## emacs config
+RUN cd /home/$USER && sudo su $USER -c "rm -f /home/$USER/.emacs" && sudo su $USER -c "ln -s /home/$USER/configs/.emacs /home/$USER/"
+
 ## get sources
 RUN cd /home/$USER && sudo su $USER -c "git clone -j4 --depth=1 --branch $KVERSION https://github.com/Rubusch/linux.git"
 RUN cd /home/$USER/linux && sudo su $USER -c "git checkout $KVERSION -b $KVERSION"
 
 ## defconfigs
-RUN cd /home/$USER && sudo su $USER -c "git clone -j4 --depth=1 --branch $KDEFCONFIG_BRANCH https://github.com/Rubusch/linux-defconfigs.git"
-RUN cd /home/$USER/linux/arch/x86/configs && sudo su $USER -c "ln -s /home/user/linux-defconfigs/arch/x86/configs/* ."
+RUN cd /home/$USER/configs && sudo su $USER -c "git clone -j4 --depth=1 --branch $KDEFCONFIG_BRANCH https://github.com/Rubusch/linux-defconfigs.git"
+RUN cd /home/$USER/linux/arch/x86/configs && sudo su $USER -c "ln -s /home/user/configs/linux-defconfigs/arch/x86/configs/lothars_defconfig ."
 
 
 ################################################################################
