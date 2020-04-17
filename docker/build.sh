@@ -9,7 +9,7 @@ export MY_CONFIGS="${MY_HOME}/configs"
 
 ## if linux-defconfigs is not there, clone it (ro), if already checked out, skip this step
 if [ -d "${MY_CONFIGS}" ]; then
-  if [ !-d "${MY_CONFIGS}/linux-defconfigs" ]; then
+  if [ ! -d "${MY_CONFIGS}/linux-defconfigs" ]; then
       cd "${MY_CONFIGS}"
       git clone -j4 --depth=1 --branch ${KDEFCONFIG_BRANCH} https://github.com/Rubusch/linux-defconfigs.git
   fi
