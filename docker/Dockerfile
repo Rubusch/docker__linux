@@ -50,10 +50,14 @@ RUN apt-get install -y  \
 
 ################################################################################
 ## locale settings
-RUN locale-gen en_US.UTF-8
+RUN locale-gen
 ENV LANG en_US.UTF-8
-ENV LANGUAGE en_US.UTF-8
+ENV LANGUAGE en_US:en
 ENV LC_ALL en_US.UTF-8
+
+## locale-hack, needed for debian since locale-gen <arg> seems not to work
+RUN sed -i '/^#.* en_US.UTF-8.* /s/^#//' /etc/locale.gen
+RUN locale-gen
 
 
 ################################################################################
