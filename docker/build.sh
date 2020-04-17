@@ -1,5 +1,5 @@
 #!/bin/bash -e
-export KDEFCONFIG=x86_64__v5.5__thinkpad-x1_6th-gen_20kh-ct01ww_defconfig
+export KDEFCONFIG=lothars_defconfig
 export MY_HOME="/home/$(whoami)"
 
 cd ${MY_HOME}/linux

@@ -12,6 +12,7 @@ ARG USER=""
 ## the branch
 ARG KVERSION="v5.5"
 ARG KDEFCONFIG_BRANCH="lothar/${KVERSION}-thinkpad-x1"
+ARG KDEFCONFIG_NAME="lothars_defconfig"
 
 
 ################################################################################
@@ -87,7 +88,7 @@ RUN cd /home/$USER/linux && sudo su $USER -c "git checkout $KVERSION -b $KVERSIO
 
 ## defconfigs
 RUN cd /home/$USER/configs && sudo su $USER -c "git clone -j4 --depth=1 --branch $KDEFCONFIG_BRANCH https://github.com/Rubusch/linux-defconfigs.git"
-RUN cd /home/$USER/linux/arch/x86/configs && sudo su $USER -c "ln -s /home/user/configs/linux-defconfigs/arch/x86/configs/lothars_defconfig ."
+RUN cd /home/$USER/linux/arch/x86/configs && sudo su $USER -c "ln -s /home/user/configs/linux-defconfigs/arch/x86/configs/${KDEFCONFIG_NAME} ."
 
 
 ################################################################################
