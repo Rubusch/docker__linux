@@ -1,7 +1,7 @@
 # Docker: linux-thinkpad-x1-20kh-ct01ww
 
 
-A docker image/container description for building the kernel for my thinkpad x1 carbon (20kh ct01ww)
+A docker image/container description for building the kernel for my thinkpad x1 carbon (20kh ct01ww)  
 
 
 ## Build
@@ -32,9 +32,12 @@ $ time docker run -ti --rm -v $PWD/configs:/home/$USER/configs -v $PWD/output:/h
 
 ## Debug
 
+enter the container as follows  
+
 ```
-$ docker run -ti rubuschl/thinkpad-kernel /bin/bash
-docker$ ./build.sh
+$ docker run -ti --rm -v $PWD/configs:/home/$USER/configs -v $PWD/output:/home/$USER/output --user=$USER:$USER --workdir=/home/$USER rubuschl/linux:20191203212934 /bin/bash
+
+docker$ build.sh
 ```
 
 
@@ -42,3 +45,4 @@ docker$ ./build.sh
 ## Installation
 
 First install the linux-headers, then the linux-image.
+All resulting install packages are found in **output** as **.deb** packages.
