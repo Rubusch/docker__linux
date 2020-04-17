@@ -23,26 +23,23 @@ $ docker images
 ```
 
 
-start the container using the tag e.g. **20191203212934** for building the linux deb package  
+Either start the container using the tag e.g. **20191203212934** for building the linux deb package  
 
 ```
 $ time docker run -ti --rm -v $PWD/configs:/home/$USER/configs -v $PWD/output:/home/$USER/output --user=$USER:$USER --workdir=/home/$USER rubuschl/linux:20191203212934
 ```
 
-
-## Debug
-
-enter the container as follows  
+Or, enter the container as follows and build inside the container  
 
 ```
 $ docker run -ti --rm -v $PWD/configs:/home/$USER/configs -v $PWD/output:/home/$USER/output --user=$USER:$USER --workdir=/home/$USER rubuschl/linux:20191203212934 /bin/bash
 
-docker$ build.sh
+docker$ time build.sh
 ```
 
 
 
 ## Installation
 
-First install the linux-headers, then the linux-image.
-All resulting install packages are found in **output** as **.deb** packages.
+* First install the linux-headers, then the linux-image.
+* All resulting install packages are found in **output** as **.deb** packages.
