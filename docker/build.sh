@@ -1,4 +1,6 @@
 #!/bin/bash -e
+export KVERSION="v5.5"
+
 export KDEFCONFIG_NAME="lothars_defconfig"
 export KDEFCONFIG_BRANCH="lothar/${KVERSION}-thinkpad-x1"
 
