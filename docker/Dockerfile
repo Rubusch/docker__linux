@@ -85,6 +85,9 @@ RUN cd /home/$USER && sudo su $USER -c "rm -f /home/$USER/.emacs" && sudo su $US
 RUN cd /home/$USER && sudo su $USER -c "git clone -j4 --depth=1 --branch $KVERSION https://github.com/Rubusch/linux.git"
 RUN cd /home/$USER/linux && sudo su $USER -c "git checkout $KVERSION -b $KVERSION"
 
+## get defconfigs
+## NB: is done separately in build.sh
+
 
 ################################################################################
 ## command mode
