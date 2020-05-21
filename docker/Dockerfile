@@ -44,6 +44,8 @@ RUN apt-get install -y  \
 
 ## for building documentation targets
 RUN apt-get install -y  \
+    kmod \
+    cpio \
     imagemagick \
     graphviz \
     dvipng \
