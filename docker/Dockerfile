@@ -10,7 +10,8 @@ ENV DEBIAN_FRONTEND=noninteractive
 ARG USER=""
 
 ## the branch
-ARG KVERSION="v5.4"
+#ARG KVERSION="v5.4"
+ARG KVERSION="lothar/v5.4-thinkpad-x1"
 ARG KDEFCONFIG_NAME="lothars_defconfig"
 
 
