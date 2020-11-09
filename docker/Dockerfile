@@ -10,7 +10,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 ARG USER=""
 
 ## the branch
-ARG KVERSION="v5.5"
+ARG KVERSION="v5.4"
 ARG KDEFCONFIG_NAME="lothars_defconfig"
 
 
