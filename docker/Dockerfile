@@ -10,7 +10,6 @@ ENV DEBIAN_FRONTEND=noninteractive
 ARG USER=""
 
 ## the branch
-#ARG KVERSION="v5.4"
 ARG KVERSION="lothar/v5.4-thinkpad-x1"
 ARG KDEFCONFIG_NAME="lothars_defconfig"
 
@@ -83,8 +82,10 @@ RUN cd /home/$USER && sudo su $USER -c "rm -f /home/$USER/.vimrc" && sudo su $US
 RUN cd /home/$USER && sudo su $USER -c "rm -f /home/$USER/.emacs" && sudo su $USER -c "ln -s /home/$USER/configs/.emacs /home/$USER/"
 
 ## get sources
+RUN cd /home/$USER && sudo su $USER -c "git config --global http.sslVerify false"
+RUN cd /home/$USER && sudo su $USER -c "git config --global http.postBuffer 1048576000"
 RUN cd /home/$USER && sudo su $USER -c "git clone -j4 --depth=1 --branch $KVERSION https://github.com/Rubusch/linux.git"
-#RUN cd /home/$USER/linux && sudo su $USER -c "git checkout $KVERSION -b $KVERSION"
+RUN cd /home/$USER/linux && sudo su $USER -c "git checkout $KVERSION -b $KVERSION || true"
 
 ## get defconfigs
 ## NB: is done separately in build.sh
