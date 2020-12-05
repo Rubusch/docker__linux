@@ -18,16 +18,15 @@ $ time docker build --no-cache --build-arg USER=$USER -t rubuschl/linux:$(date +
 
 ## Usage
 
-Obtain the tag e.g. **20191203212934**, enter the container and build inside (rebuild possible w/o login)  
-
 ```
 $ docker images
     REPOSITORY               TAG                 IMAGE ID            CREATED             SIZE
     rubuschl/linux           20191203212934      70dce0bd5619        15 minutes ago      612MB
+    ...
 
-$ docker run -ti --rm -v $PWD/configs:/home/$USER/configs -v $PWD/output:/home/$USER/output --user=$USER:$USER --workdir=/home/$USER rubuschl/linux:20191203212934 /bin/bash
+$ docker run -ti --rm --user=$USER:$USER --workdir=/home/$USER -v $PWD/configs:/home/$USER/configs -v $PWD/output:/home/$USER/output rubuschl/linux:20191203212934 /bin/bash
 
-docker$ time build.sh
+docker $> time build.sh
 ```
 
 
