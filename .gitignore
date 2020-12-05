@@ -4,5 +4,6 @@
 *.orig
 
 ## ignore output folder
+output
 linux
 
