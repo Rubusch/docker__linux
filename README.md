@@ -29,6 +29,7 @@ $ time docker build --no-cache --build-arg USER=$USER --build-arg GMAIL_USER="<g
 $ docker images
     REPOSITORY               TAG                 IMAGE ID            CREATED             SIZE
     rubuschl/linuxpatches    20191203212934      70dce0bd5619        15 minutes ago      612MB
+    ...
 
 $ docker run --rm -ti --user=$USER:$USER --workdir=/home/$USER -v $PWD/configs:/home/$USER/configs -v $PWD/linux:/home/$USER/linux rubuschl/linuxpatches:20191203212934 /bin/bash
 
