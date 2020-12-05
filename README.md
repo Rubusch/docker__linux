@@ -1,7 +1,11 @@
+[![CircleCI](https://circleci.com/gh/Rubusch/docker__linux.svg?style=shield)](https://circleci.com/gh/Rubusch/docker__linux)
+[![License: GPL v2](https://img.shields.io/badge/License-GPL%20v2-blue.svg)](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html)
+
+
 # Docker: linux for patches
 
 
-A docker image for patch development.  
+A docker image for kernel development and creating community patches.  
 
 
 ## Build
