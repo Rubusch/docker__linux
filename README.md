@@ -4,50 +4,34 @@
 
 # Docker: linux for patches
 
-
-A docker image for kernel development and creating community patches.  
+My docker image for patch development via ``git send-mail`` (needs gmail)  
 
 
 ## Build
 
-The setup needs a gmail email address for patch delivery via ``git send-email``. Many other email providers are possible in general, too  
+**NOTE** Replace ``gmail user name`` and ``email@gmail.com`` with your gmail credentials  
 
-**NOTE** Replace ``gmail user name``, ``email@gmail.com`` and ``gmail password`` with your gmail credentials  
-
-**NOTE** For the gamil passwords containing ``<`` and ``>`` i.e. use escaped ``\\\<`` and ``\\\>``, in any case don't use quotes.  
 
 ```
 $ cd ./docker
 
-$ time docker build --no-cache --build-arg USER=$USER --build-arg GMAIL_USER="<gmail user name>" --build-arg GMAIL=<email@gmail.com> --build-arg GMAIL_PASSW=<gmail password> -t rubuschl/linuxpatches:$(date +%Y%m%d%H%M%S) .
-    10m...
+$ time docker build --build-arg USER=$USER --build-arg GMAIL_USER="<gmail user name>" --build-arg GMAIL=<email@gmail.com> -t rubuschl/linuxpatches:$(date +%Y%m%d%H%M%S) .
 ```
 
 ## Usage
+
+**NOTE** The data configured inside the container are not persistent!! The linux source clone, though will be performed on the mounted folder, thus will persist.  
 
 ```
 $ docker images
     REPOSITORY               TAG                 IMAGE ID            CREATED             SIZE
     rubuschl/linuxpatches    20191203212934      70dce0bd5619        15 minutes ago      612MB
-    ...
 
-$ docker run --rm -ti --user=$USER:$USER --workdir=/home/$USER -v $PWD/configs:/home/$USER/configs -v $PWD/linux:/home/$USER/linux rubuschl/linuxpatches:20191203212934 /bin/bash
+$ time docker run --rm -ti --user=$USER:$USER --workdir=/home/$USER -v $PWD/configs:/home/$USER/configs -v $PWD/linux:/home/$USER/linux rubuschl/linuxpatches:20191203212934 /bin/bash
+
+docker $> git config --global sendemail.smtppass <GMAIL PASSWORD>
 
 docker $> build.sh
 ```
 
-## Miscellaneous
-
-Obtain the current config as a starting point  
-
-```
-$ zcat /proc/config.gz > .config
-```
-
-Build the for debian as follows  
-
-```
-$ make -j8 deb-pkg all
-```
-
-Make sure to backup your work also outside the container.  
+Provide your defconfig, work on the source and build the kernel. Create the patch as normal via ``git send-mail``.  
