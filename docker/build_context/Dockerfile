@@ -1,6 +1,5 @@
 FROM debian:10
 MAINTAINER Lothar Rubusch <l.rubusch@gmail.com>
-WORKDIR /root
 ENV DEBIAN_FRONTEND=noninteractive
 
 
@@ -9,14 +8,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 ## in case docker complains for a not set USER, perhaps you forgot to use --build-arg USER=$USER
 ARG USER=""
 
-## gmail user
-ARG GMAIL_USER=""
-
-## email address at gmail
-ARG GMAIL=""
-
-## email password for that address
-#ARG GMAIL_PASSW=""
+#WORKDIR /home/$USER
 
 
 ################################################################################
@@ -104,25 +96,24 @@ RUN sed -i '/%sudo/s/.*/%sudo   ALL=NOPASSWD: ALL/' /etc/sudoers
 ## NOTE: this container will obtain sources in manually executed script (later), sources shall be shared between container and outside
 
 ## prepare paths
-RUN sudo su $USER -c "mkdir -p /home/$USER/linux"
-RUN sudo su $USER -c "mkdir -p /home/$USER/configs"
-
-## documentation requirements (probably not needed due to package 'python3-sphinx')
-#RUN cd /home/$USER/linux && sudo su $USER -c "/usr/bin/virtualenv sphinx_1.7.9"
-#RUN cd /home/$USER/linux && sudo su $USER -c "source sphinx_1.7.9/bin/activate && pip install -r ./Documentation/sphinx/requirements.txt && deactivate"
+RUN mkdir -p /home/$USER/linux
+RUN mkdir -p /home/$USER/configs
 
 ## reset permissions
-RUN chown $USER:$USER -R /home/$USER/linux
-RUN chown $USER:$USER -R /home/$USER/configs
+RUN chown $USER:$USER -R /home/$USER
 
 
 ################################################################################
 ## set up tools
 USER $USER
 
+## documentation requirements (probably not needed due to package 'python3-sphinx')
+#RUN cd /home/$USER/linux && /usr/bin/virtualenv sphinx_1.7.9
+#RUN cd /home/$USER/linux && source sphinx_1.7.9/bin/activate && pip install -r ./Documentation/sphinx/requirements.txt && deactivate
+
 ## bash config
 RUN cd /home/$USER && rm -f /home/$USER/.bashrc && ln -s /home/$USER/configs/.bashrc /home/$USER/
-    
+
 ## vim config
 RUN cd /home/$USER && rm -f /home/$USER/.vimrc && ln -s /home/$USER/configs/.vimrc /home/$USER/
 
@@ -130,20 +121,7 @@ RUN cd /home/$USER && rm -f /home/$USER/.vimrc && ln -s /home/$USER/configs/.vim
 RUN cd /home/$USER && rm -f /home/$USER/.emacs && ln -s /home/$USER/configs/.emacs /home/$USER/
 
 ## git config
-RUN cd /home/$USER && git config --global user.name "$GMAIL_USER"
-RUN cd /home/$USER && git config --global user.email $GMAIL
-RUN cd /home/$USER && git config --global alias.st status
-RUN cd /home/$USER && git config --global alias.ci commit
-RUN cd /home/$USER && git config --global alias.co checkout
-RUN cd /home/$USER && git config --global alias.br branch
-
-RUN cd /home/$USER && git config --global sendemail.from "$GMAIL_USER <$GMAIL>"
-RUN cd /home/$USER && git config --global sendemail.smtpserver smtp.gmail.com
-RUN cd /home/$USER && git config --global sendemail.smtpuser $GMAIL
-RUN cd /home/$USER && git config --global sendemail.smtpencryption tls
-#RUN cd /home/$USER && git config --global sendemail.smtppass $GMAIL_PASSW
-RUN cd /home/$USER && git config --global sendemail.chainreplyto false
-RUN cd /home/$USER && git config --global sendemail.smtpserverport 587
+RUN cd /home/$USER && rm -f /home/$USER/.gitconfig && ln -s /home/$USER/secrets/.gitconfig /home/$USER/
 
 
 ################################################################################

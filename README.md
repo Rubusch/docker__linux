@@ -4,34 +4,33 @@
 
 # Docker: linux for patches
 
-My docker image for patch development via ``git send-mail`` (needs gmail)  
+
+## Tools Needed
+
+```
+$ sudo curl -L "https://github.com/docker/compose/releases/download/1.28.6/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+$ sudo chmod a+x /usr/local/bin/docker-compose
+```
+
+NB: Where 1.28.6 is the latest version (currently not supported by devian/ubuntu package management)  
 
 
 ## Build
 
-**NOTE** Replace ``gmail user name`` and ``email@gmail.com`` with your gmail credentials  
+The setup needs a gmail email address for patch delivery via ``git send-email``. Many other email providers are possible in general, too  
 
 
 ```
 $ cd ./docker
-
-$ time docker build --build-arg USER=$USER --build-arg GMAIL_USER="<gmail user name>" --build-arg GMAIL=<email@gmail.com> -t rubuschl/linuxpatches:$(date +%Y%m%d%H%M%S) .
+$ docker-compose up
 ```
+
+**NOTE** After first run, go to ``docker/secrets/.gitconfig`` or in the container ``/home/USER/.gitconfig`` (same file), and fill out what is missing.  
 
 ## Usage
 
-**NOTE** The data configured inside the container are not persistent!! The linux source clone, though will be performed on the mounted folder, thus will persist.  
-
 ```
-$ docker images
-    REPOSITORY               TAG                 IMAGE ID            CREATED             SIZE
-    rubuschl/linuxpatches    20191203212934      70dce0bd5619        15 minutes ago      612MB
+$ docker-compose -f ./docker-compose.yml run --rm rpi3b_buildroot /bin/bash
 
-$ time docker run --rm -ti --user=$USER:$USER --workdir=/home/$USER -v $PWD/configs:/home/$USER/configs -v $PWD/linux:/home/$USER/linux rubuschl/linuxpatches:20191203212934 /bin/bash
-
-docker $> git config --global sendemail.smtppass <GMAIL PASSWORD>
-
-docker $> build.sh
+$ build.sh
 ```
-
-Provide your defconfig, work on the source and build the kernel. Create the patch as normal via ``git send-mail``.  

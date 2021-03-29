@@ -1,0 +1,30 @@
+## this is a template, please NO EDIT
+## it will be copied over to a not tracked file, there fill out the following,
+## and/or adjust config as needed
+[user]
+	name = #FILL: FIRST LASTNAME
+	email = #FILL: E-MAIL
+[sendemail]
+	from = #FILL: FIRST LASTNAME <E-MAIL>
+	smtpserver = smtp.gmail.com
+	smtpuser = #FILL: E-MAIL
+	smtpencryption = tls
+	smtppass = #FILL: E-MAIL PASSWORD
+	chainreplyto = false
+	smtpserverport = 587
+[color]
+	diff = auto
+	status = auto
+	branch = auto
+	interactive = auto
+[alias]
+	st = status
+	ci = commit
+	co = checkout
+	br = branch
+[difftool]
+	prompt = false
+[merge]
+	tool = meld
+[core]
+	editor = vim

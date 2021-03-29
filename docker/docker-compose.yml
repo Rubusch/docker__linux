@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+    linux_devel:
+        container_name: linux_devel
+        image: rubuschl/linux_devel
+        build:
+            context: build_context
+            dockerfile: Dockerfile
+            args:
+                USER: $USER
+        user: $USER              ## docker run --user=$USER
+        stdin_open: true         ## docker run -i
+        tty: true                ## docker run -t
+        #privileged: true
+
+        environment:
+          - USER
+
+        volumes:
+          - ./linux:/home/$USER/linux  ## folder does not need to be around
+
+          - ./secrets:/home/$USER/secrets
+
+          - type: bind
+            source: ./build_configs      ## folder must be around
+            target: /home/$USER/configs
