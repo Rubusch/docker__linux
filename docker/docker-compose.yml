@@ -21,6 +21,7 @@ services:
           - ~/.gitconfig:/home/${USER}/.gitconfig
           - ~/.ssh:/home/${USER}/.ssh
           - ./linux:/home/$USER/linux    ## folder does not need to be around
+          - ./build_opt:/opt             ## optionally, place to install toolchains
           - type: bind
-            source: ./build_configs      ## folder must be around
+            source: ./build_configs      ## configs, folder must be around
             target: /home/$USER/configs
