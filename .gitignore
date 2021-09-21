@@ -4,5 +4,11 @@
 *.orig
 
 ## ignore output folder
-build_opt
-linux
+workspace
+resources
+
+## docker base image
+ubu*
+
+## docker environment
+.env

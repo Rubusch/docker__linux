@@ -123,7 +123,3 @@ fi
 if [[ -z "$(echo ${PATH} | grep '/usr/sbin')" ]]; then
     export PATH=${PATH}:/usr/sbin
 fi
-
-## coccinelle
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib
-export PYTHONPATH=$PYTHONPATH:${exec_prefix}/lib/coccinelle/python

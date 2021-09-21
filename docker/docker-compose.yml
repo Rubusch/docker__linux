@@ -8,20 +8,24 @@ services:
             context: build_context
             dockerfile: Dockerfile
             args:
-                USER: ${USER}
-        user: ${USER}            ## docker run --user=$USER
-        stdin_open: true         ## docker run -i
-        tty: true                ## docker run -t
-        #privileged: true
-
+                USER: "${USER}"
+                UID: "${UID}"
+                GID: "${GID}"
+        user: "${UID}:${GID}"   ## docker run --user=$USER
+        stdin_open: true        ## docker run -i
+        tty: true               ## docker run -t
+        privileged: true
         environment:
           - USER
-
+        env_file:
+          - .env
         volumes:
+        ## folders not need to be around
           - ~/.gitconfig:/home/${USER}/.gitconfig
           - ~/.ssh:/home/${USER}/.ssh
-          - ./linux:/home/$USER/linux    ## folder does not need to be around
-          - ./build_opt:/opt             ## optionally, place to install toolchains
+          - ./workspace:/home/$USER/workspace
+          - ./workspace.opt:/opt
+        ## folder must be around
           - type: bind
-            source: ./build_configs      ## configs, folder must be around
+            source: ./build_configs
             target: /home/$USER/configs

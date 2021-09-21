@@ -1,40 +1,29 @@
 #!/bin/sh -e
-MY_USER="$(whoami)"
+#!/bin/sh -e
+MY_USER="${USER}"
 MY_HOME="/home/${MY_USER}"
-SSH_DIR="${MY_HOME}/.ssh"
-SSH_KNOWN_HOSTS="${SSH_DIR}/known_hosts"
-SOURCES_DIR="${MY_HOME}/linux"
+WORKSPACE_DIR="${MY_HOME}/workspace"
+SOURCES_DIR="${WORKSPACE_DIR}/linux"
 CONFIGS_DIR="${MY_HOME}/configs"
 LINUX_BRANCH="staging-testing"
 
-## permissions
-for item in "${SOURCES_DIR}" "${CONFIGS_DIR}" "${SSH_DIR}" "${MY_HOME}/.gitconfig"; do
-    if [ ! "${MY_USER}" = "$( stat -c %U "${item}" )" ]; then
-        ## may take some time
-        sudo chown "${MY_USER}:${MY_USER}" -R "${item}"
-    fi
-done
-
-## ssh known_hosts
-touch "${SSH_KNOWN_HOSTS}"
-for item in "github.com" "bitbucket.org"; do
-    if [ "" = "$( grep "${item}" -r "${SSH_KNOWN_HOSTS}" )" ]; then
-        ssh-keyscan "${item}" >> "${SSH_KNOWN_HOSTS}"
-    fi
-done
+## prepare
+00_defenv.sh "${WORKSPACE_DIR}" "${CONFIGS_DIR}"
 
 ## get sources
 cd "${MY_HOME}"
-if [ -d "${SOURCES_DIR}/.git" ]; then
+if [ -d "${SOURCES_DIR}" ]; then
     cd "${SOURCES_DIR}"
-    git fetch --all
+    git fetch --all || exit 1
 else
-    git clone -j "$(nproc)" --branch "${LINUX_BRANCH}" git://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git linux
+    cd "${WORKSPACE_DIR}"
+    git clone -j "$(nproc)" --branch "${LINUX_BRANCH}" git://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git "$( basename "${SOURCES_DIR}" )"
     #git clone -j "$(nproc)" --depth 1 git://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git
     #git clone -j "$(nproc)" git://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git
 fi
 
 ## generate TAGS
+test -d "${SOURCES_DIR}" || exit 1
 cd "${SOURCES_DIR}"
 rm -f ./TAGS
 find . -regex ".*\.\(h\|c\)$" -exec etags -a {} \;
