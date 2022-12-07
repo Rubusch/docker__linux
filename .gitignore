@@ -7,8 +7,8 @@
 workspace
 resources
 
-## docker base image
-ubu*
+## defconfigs stuff
+linux-defconfigs
 
 ## docker environment
 .env

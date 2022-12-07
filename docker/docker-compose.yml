@@ -9,23 +9,21 @@ services:
             dockerfile: Dockerfile
             args:
                 USER: "${USER}"
-                UID: "${UID}"
-                GID: "${GID}"
-        user: "${UID}:${GID}"   ## docker run --user=$USER
+        user: "${USER}"
         stdin_open: true        ## docker run -i
         tty: true               ## docker run -t
         privileged: true
         environment:
           - USER
-        env_file:
-          - .env
         volumes:
         ## folders not need to be around
           - ~/.gitconfig:/home/${USER}/.gitconfig
-          - ~/.ssh:/home/${USER}/.ssh
+        # - ~/.ssh:/home/${USER}/.ssh
           - ./workspace:/home/$USER/workspace
-          - ./workspace.opt:/opt
         ## folder must be around
+          - type: bind
+            source: ~/.ssh
+            target: /home/${USER}/.ssh
           - type: bind
             source: ./build_configs
             target: /home/$USER/configs
