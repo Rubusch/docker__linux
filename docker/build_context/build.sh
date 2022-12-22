@@ -12,6 +12,8 @@ export LINUX_BRANCH="staging-testing"
 ## get sources
 10_linux-devel-sources.sh "${SOURCES_DIR}"
 
+## check out defconfig
+20_thinkpad-defconfigs.sh "${SOURCES_DIR}"
 
 ## development
 90_devel-preparation.sh "${SOURCES_DIR}"
