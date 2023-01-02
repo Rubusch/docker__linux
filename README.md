@@ -27,7 +27,7 @@ The setup needs a **gmail email address** for patch delivery via ``git send-emai
 
 ```
 $ cd ./docker
-$ docker-compose up
+$ docker-compose up -d --remove-orphans
 ```
 
 **NOTE** After first run, go to ``docker/secrets/.gitconfig`` or in the container ``/home/USER/.gitconfig`` (same file), and fill out what is missing.  
