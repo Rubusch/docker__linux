@@ -1,9 +1,9 @@
 version: '3.8'
 
 services:
-    linux:
-        container_name: linux
-        image: ${USER}/linux
+    linux-devel-rpi3b:
+        container_name: linux-devel-rpi3b
+        image: ${USER}/linux-devel-rpi3b
         build:
             context: build_context
             dockerfile: Dockerfile
