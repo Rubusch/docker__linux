@@ -68,3 +68,16 @@ $ docker-compose ps
 ```
 
 For more consult the specific help and manpages.  
+
+
+## Issues
+
+issue
+
+```
+$ build.sh
+    + 00_devenv.sh /home/user/workspace /home/user/configs
+    shell-init: error retrieving current directory: getcwd: cannot access parent directories: No such file or directory
+```
+fix: change to ``/home/<user>``, then execute build.sh  
+
