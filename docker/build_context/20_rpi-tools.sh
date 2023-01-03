@@ -16,10 +16,10 @@ else
     cd "${MY_HOME}"
     ln -sf "${TOOLS_DIR}" ~/tools
 
-    echo 'export PATH=~/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian-x64/bin:${PATH}' > ${WORKSPACE}/source-me.sh
-    echo 'export TOOLCHAIN=~/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian-x64/' >> ${WORKSPACE}/source-me.sh
-    echo 'export CROSS_COMPILE=arm-linux-gnueabihf-' >> ${WORKSPACE}/source-me.sh
-    echo 'export ARCH=arm' >> ${WORKSPACE}/source-me.sh
+    echo 'export PATH=~/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian-x64/bin:${PATH}' > ${WORKSPACE_DIR}/source-me.sh
+    echo 'export TOOLCHAIN=~/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian-x64/' >> ${WORKSPACE_DIR}/source-me.sh
+    echo 'export CROSS_COMPILE=arm-linux-gnueabihf-' >> ${WORKSPACE_DIR}/source-me.sh
+    echo 'export ARCH=arm' >> ${WORKSPACE_DIR}/source-me.sh
 fi
 
 if [ ! -d "${TOOLS_DIR}" ]; then
