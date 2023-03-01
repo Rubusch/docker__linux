@@ -10,6 +10,8 @@ ENV DEBIAN_FRONTEND=noninteractive
 ################################################################################
 ## the USER is needed to make it available as --build-arg
 ARG USER="${USER}"
+ARG UID="${UID}"
+ARG GID="${GID}"
 ENV MY_CONFIGS="/home/$USER/configs"
 
 
@@ -17,7 +19,7 @@ ENV MY_CONFIGS="/home/$USER/configs"
 ## set up apt fully functional
 USER root
 RUN dpkg --add-architecture i386
-RUN apt-get update && apt-get upgrade -y && apt-get autoremove -y --purge
+RUN apt-get update && apt-get autoremove -y --purge
 
 ## development
 RUN apt-get install -y \
@@ -54,7 +56,6 @@ RUN apt-get install -y \
 	xmlto \
 	curl \
 	bin86 \
-	gawk \
 	gcc \
 	net-tools \
 	ncurses-dev \
@@ -62,16 +63,12 @@ RUN apt-get install -y \
 	libssl-dev \
 	flex \
 	bison \
-	xterm \
 	autoconf \
 	libtool \
-	texinfo \
 	zlib1g-dev \
 	gcc-multilib \
 	build-essential \
 	automake \
-	screen \
-	putty \
 	pax \
 	g++ \
 	device-tree-compiler \
@@ -99,19 +96,15 @@ RUN apt-get install -y \
 	tftpd \
 	libselinux1 \
 	wget \
-	diffstat \
-	chrpath \
 	socat \
 	tofrodos \
 	debianutils \
 	iputils-ping \
 	libegl1-mesa \
-	libsdl1.2-dev \
 	pylint \
 	python3 \
 	python2 \
 	cpio \
-	tftpd \
 	gnupg \
 	zlib1g:i386 \
 	haveged \
@@ -140,7 +133,6 @@ RUN apt-get install -y \
 	sysvinit-utils \
 	google-perftools \
 	libncurses5 \
-	libncurses5-dev \
 	libncursesw5-dev \
 	libncurses5:i386 \
 	libtinfo5 \
@@ -179,7 +171,8 @@ ENV LC_ALL en_US.UTF-8
 ################################################################################
 ## user settings
 USER root
-RUN useradd -m -s /bin/bash "$USER"
+RUN groupadd -g "$GID" "$USER"
+RUN useradd -m -u "$UID" -g "$GID" -s /bin/bash "$USER"
 RUN usermod -a -G "sudo" "$USER"
 RUN sed -i '/%sudo/s/.*/%sudo   ALL=NOPASSWD: ALL/' /etc/sudoers
 RUN mkdir -p /usr/local
@@ -239,7 +232,7 @@ RUN mkdir -p /home/$USER/.ssh
 ################################################################################
 ## apt
 USER root
-RUN apt-get update && apt-get upgrade -y && apt-get autoremove -y --purge
+RUN apt-get update && apt-get autoremove -y --purge
 RUN apt-get install -y latexmk
 RUN apt-get install -y librsvg2-bin
 RUN apt-get install -y virtualenv
