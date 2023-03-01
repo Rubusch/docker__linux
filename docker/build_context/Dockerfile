@@ -56,7 +56,6 @@ RUN apt-get install -y \
 	xmlto \
 	curl \
 	bin86 \
-	gawk \
 	gcc \
 	net-tools \
 	ncurses-dev \
@@ -64,16 +63,12 @@ RUN apt-get install -y \
 	libssl-dev \
 	flex \
 	bison \
-	xterm \
 	autoconf \
 	libtool \
-	texinfo \
 	zlib1g-dev \
 	gcc-multilib \
 	build-essential \
 	automake \
-	screen \
-	putty \
 	pax \
 	g++ \
 	device-tree-compiler \
@@ -101,14 +96,11 @@ RUN apt-get install -y \
 	tftpd \
 	libselinux1 \
 	wget \
-	diffstat \
-	chrpath \
 	socat \
 	tofrodos \
 	debianutils \
 	iputils-ping \
 	libegl1-mesa \
-	libsdl1.2-dev \
 	pylint \
 	python3 \
 	python2 \
@@ -141,7 +133,6 @@ RUN apt-get install -y \
 	sysvinit-utils \
 	google-perftools \
 	libncurses5 \
-	libncurses5-dev \
 	libncursesw5-dev \
 	libncurses5:i386 \
 	libtinfo5 \
