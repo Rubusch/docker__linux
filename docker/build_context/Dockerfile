@@ -113,7 +113,6 @@ RUN apt-get install -y \
 	python3 \
 	python2 \
 	cpio \
-	tftpd \
 	gnupg \
 	zlib1g:i386 \
 	haveged \
