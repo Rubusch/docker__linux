@@ -26,6 +26,8 @@ Make sure, ``~/.local`` is within ``$PATH`` or re-link e.g. it to ``/usr/local``
 The setup needs a **gmail email address** for patch delivery via ``git send-email``. Many other email providers are possible in general, too  
 
 ```
+$ echo "UID=$(id -u)" > ./docker/.env
+$ echo "GID=$(id -g)" >> ./docker/.env
 $ cd ./docker
 $ docker-compose up -d --remove-orphans
 ```

@@ -9,12 +9,16 @@ services:
             dockerfile: Dockerfile
             args:
                 USER: "${USER}"
-        user: "${USER}"
+                UID: "${UID}"
+                GID: "${GID}"
+        user: "${UID}:${GID}"   ## docker run --user=$USER
         stdin_open: true        ## docker run -i
         tty: true               ## docker run -t
         privileged: true
         environment:
           - USER
+        env_file:
+          - .env
         volumes:
         ## folders not need to be around
           - ~/.gitconfig:/home/${USER}/.gitconfig
