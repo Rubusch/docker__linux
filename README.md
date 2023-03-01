@@ -7,7 +7,9 @@
 The container is a standalone container and builds on ubuntu standard containers.  
 
 
-## Tools Needed
+## Preparation
+
+Needed tools.  
 
 ```
 $ sudo apt-get install -y libffi-dev libssl-dev python3-dev python3-pyqt5 python3-pyqt5.qtwebengine python3 python3-pip
@@ -26,6 +28,8 @@ Make sure, ``~/.local`` is within ``$PATH`` or re-link e.g. it to ``/usr/local``
 The setup needs a **gmail email address** for patch delivery via ``git send-email``. Many other email providers are possible in general, too  
 
 ```
+$ echo "UID=$(id -u)" > ./docker/.env
+$ echo "GID=$(id -g)" >> ./docker/.env
 $ cd ./docker
 $ docker-compose up -d --remove-orphans
 ```
