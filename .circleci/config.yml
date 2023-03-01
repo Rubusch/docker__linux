@@ -12,5 +12,7 @@ jobs:
       ## build base container (multistage build)
       - checkout
       - run: |
+          echo "UID=$(id -u)" > ./docker/.env
+          echo "GID=$(id -g)" >> ./docker/.env
           cd ./docker
           docker-compose up --exit-code-from linux-devel-rpi3b
