@@ -90,7 +90,8 @@ RUN apt-get install -y \
 	debianutils \
 	graphviz \
 	doxygen \
-	tftpd-hpa \
+	xinetd \
+	tftpd \
 	tftp \
 	emacs \
 	emacs-goodies-el \
