@@ -87,11 +87,11 @@ RUN apt-get install -y \
 	gzip \
 	cpio \
 	util-linux \
-	patch
+	patch \
 	debianutils \
 	graphviz \
-	doxygen
-	tftpd_hpa \
+	doxygen \
+	tftpd-hpa \
 	tftp \
 	emacs \
 	emacs-goodies-el \

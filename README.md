@@ -28,10 +28,10 @@ Make sure, ``~/.local`` is within ``$PATH`` or re-link e.g. it to ``/usr/local``
 The setup needs a **gmail email address** for patch delivery via ``git send-email``. Many other email providers are possible in general, too  
 
 ```
-$ echo "UID=$(id -u)" > ./docker/.env
-$ echo "GID=$(id -g)" >> ./docker/.env
 $ cd ./docker
-$ docker-compose up -d --remove-orphans
+$ echo "UID=$(id -u)" > ./.env
+$ echo "GID=$(id -g)" >> ./.env
+$ docker-compose build --no-cache
 ```
 
 **NOTE** After first run, go to ``docker/secrets/.gitconfig`` or in the container ``/home/USER/.gitconfig`` (same file), and fill out what is missing.  
@@ -51,6 +51,10 @@ Remove orphaned containers
 ```
 $ cd ./docker
 $ docker-compose up -d --remove-orphans
+
+$ docker-compose ps
+
+$ docker-compose down
 ```
 
 Remove dangling container images, etc.  
