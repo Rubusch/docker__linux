@@ -91,7 +91,8 @@ RUN apt-get install -y \
 	debianutils \
 	graphviz \
 	doxygen \
-	tftpd-hpa \
+	xinetd \
+	tftpd \
 	tftp \
 	emacs \
 	emacs-goodies-el \
@@ -122,12 +123,12 @@ ENV LC_ALL en_US.UTF-8
 USER root
 RUN groupadd -g "$GID" "$USER"
 RUN useradd -m -u "$UID" -g "$GID" -s /bin/bash "$USER"
-RUN usermod -a -G "sudo" "$USER"
-RUN sed -i '/%sudo/s/.*/%sudo   ALL=NOPASSWD: ALL/' /etc/sudoers
+RUN echo "$USER  ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 RUN mkdir -p /usr/local
 RUN chown -R "${USER}":"${USER}" /usr/local
 RUN mkdir -p /opt
 RUN chown -R "${USER}":"${USER}" /opt
+RUN adduser "$USER" sudo
 RUN adduser "$USER" dialout
 
 ################################################################################
