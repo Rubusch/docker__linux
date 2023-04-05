@@ -21,7 +21,7 @@ services:
           - .env
         volumes:
         ## folders not need to be around
-          - ~/.gitconfig:/home/${USER}/.gitconfig
+        #  - ~/.gitconfig:/home/${USER}/.gitconfig
         # - ~/.ssh:/home/${USER}/.ssh
           - ./workspace:/home/$USER/workspace
         ## folder must be around

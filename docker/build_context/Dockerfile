@@ -169,6 +169,9 @@ RUN rm -f /home/$USER/.vimrc && ln -s ${MY_CONFIGS}/.vimrc /home/$USER/
 ## emacs config
 RUN rm -f /home/$USER/.emacs && ln -s ${MY_CONFIGS}/.emacs /home/$USER/
 
+## emacs config
+RUN rm -f /home/$USER/.gitconfig && ln -s ${MY_CONFIGS}/.gitconfig /home/$USER/
+
 ## user
 RUN echo "export USER=${USER}" >> /home/$USER/.profile
 
