@@ -25,8 +25,6 @@ Make sure, ``~/.local`` is within ``$PATH`` or re-link e.g. it to ``/usr/local``
 
 ## Build
 
-The setup needs a **gmail email address** for patch delivery via ``git send-email``. Many other email providers are possible in general, too  
-
 ```
 $ cd ./docker
 $ echo "UID=$(id -u)" > ./.env
@@ -36,8 +34,11 @@ $ docker-compose build --no-cache
 
 **NOTE** After first run, go to ``docker/secrets/.gitconfig`` or in the container ``/home/USER/.gitconfig`` (same file), and fill out what is missing.  
 
+The setup needs a **gmail email address** for patch delivery via ``git send-email``. Many other email providers are possible in general, too  
 
 ## Usage
+
+First usage and automated build.sh execution:  
 
 ```
 $ cd docker
