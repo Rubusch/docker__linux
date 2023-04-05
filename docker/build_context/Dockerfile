@@ -21,7 +21,7 @@ RUN apt-get update && apt-get autoremove -y --purge
 
 ## development
 RUN apt-get install -y \
-	gcc-aarch64-linux-gnu
+	gcc-arm-linux-gnu \
 	binutils \
 	bzip2 \
 	xz-utils \
@@ -45,7 +45,6 @@ RUN apt-get install -y \
 	libncurses5-dev \
 	openssl \
 	zlib1g-dev \
-	gcc-multilib \
 	build-essential \
 	automake \
 	pax \

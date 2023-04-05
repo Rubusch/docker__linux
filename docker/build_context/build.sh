@@ -13,7 +13,7 @@ export LINUX_BRANCH="staging-testing"
 10_linux-devel-sources.sh "${SOURCES_DIR}"
 
 ## rpi toolchain
-20_rpi-tools.sh "${WORKSPACE_DIR}/tools"
+20_rpi-tools.sh
 
 ## development
 90_devel-preparation.sh "${SOURCES_DIR}"

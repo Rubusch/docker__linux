@@ -41,8 +41,16 @@ $ docker-compose build --no-cache
 
 ```
 $ cd docker
-$ docker-compose -f ./docker-compose.yml run --rm linux-devel-rpi3b /bin/bash
+$ docker-compose -f ./docker-compose.yml run --rm devel-rpi-arm32
 docker$ build.sh
+```
+
+Login to containter:  
+
+```
+$ cd docker
+$ docker-compose -f ./docker-compose.yml run --rm devel-rpi-arm32 /bin/bash
+docker$
 ```
 
 ## Cleanup
@@ -66,7 +74,7 @@ Remove an docker image
 ```
 $ docker images
     REPOSITORY               TAG        IMAGE ID       CREATED         SIZE
-    user/linux-devel-rpi3b   20211028   8b0855782faf   11 months ago   2.99GB
+    user/devel-rpi-arm32   20211028   8b0855782faf   11 months ago   2.99GB
 $ docker rmi -f 8b0855782faf
 ```
 

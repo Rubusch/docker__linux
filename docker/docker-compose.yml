@@ -1,9 +1,9 @@
 version: '3.8'
 
 services:
-    linux-devel-rpi3b:
-        container_name: linux-devel-rpi3b
-        image: ${USER}/linux-devel-rpi3b
+    devel-rpi-arm32:
+        container_name: devel-rpi-arm32
+        image: ${USER}/devel-rpi-arm32
         build:
             context: build_context
             dockerfile: Dockerfile
