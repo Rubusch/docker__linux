@@ -21,7 +21,8 @@ RUN apt-get update && apt-get autoremove -y --purge
 
 ## development
 RUN apt-get install -y \
-	gcc-arm-linux-gnueabihf \
+	crossbuild-essential-armhf \
+	kmod \
 	binutils \
 	bzip2 \
 	xz-utils \
