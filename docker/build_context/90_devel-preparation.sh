@@ -23,7 +23,6 @@ make bindeb-pkg
 
 ## generate TAGS
 rm -f ./TAGS
-#find . -regex ".*\.\(h\|c\)$" -exec etags -a {} \;
 make tags
 
 ## setup checkpatch / codespell
@@ -34,14 +33,12 @@ chmod a+x "${SOURCES_DIR}/.git/hooks/post-commit"
 
 ## manual installation then follows (on the target)
 ##
-## -> Install compiled modules: copy over to /lib/modules...
-## -> Copy the kernel, modules, and other files to the boot filesystem,
-## locally this would be the following
-#cp arch/arm/boot/dts/*.dtb /boot/
-#cp arch/arm/boot/dts/overlays/*.dtb* /boot/overlays/
-#cp arch/arm/boot/dts/overlays/README /boot/overlays/
-#cp arch/arm/boot/zImage /boot/kernel-stephen.img
+#make -j4 Image.gz modules dtbs
+#sudo make modules_install
+#sudo cp arch/arm64/boot/dts/broadcom/*.dtb /boot/
+#sudo cp arch/arm64/boot/dts/overlays/*.dtb* /boot/overlays/
+#sudo cp arch/arm64/boot/dts/overlays/README /boot/overlays/
+#sudo cp arch/arm64/boot/Image.gz /boot/$KERNEL.img
 #
-## -> Configure the PI to boot using the new kernel by modifying and adding the
-## below line to "/boot/config.txt"
+## NB: configure to boot the specific kernel in "/boot/config.txt", i.e. set a name in the kernel config
 #kernel=kernel-demo.img
