@@ -15,7 +15,7 @@ source ${WORKSPACE_DIR}/source-me.sh
 ## prepare sources
 make bcm2709_defconfig
 
-## build kernel
+## build
 make -j4 zImage modules dtbs
 
 ## make debian package with kernel and modules (will be in upper directory)
@@ -39,3 +39,6 @@ chmod a+x "${SOURCES_DIR}/.git/hooks/post-commit"
 #sudo cp arch/arm/boot/dts/overlays/*.dtb* /boot/overlays/
 #sudo cp arch/arm/boot/dts/overlays/README /boot/overlays/
 #sudo cp arch/arm/boot/zImage /boot/$KERNEL.img
+#
+## NB: configure to boot the specific kernel in "/boot/config.txt", i.e. set a name in the kernel config
+#kernel=kernel-demo.img
