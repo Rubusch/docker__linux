@@ -21,7 +21,8 @@ RUN apt-get update && apt-get autoremove -y --purge
 
 ## development
 RUN apt-get install -y \
-	gcc-aarch64-linux-gnu \
+	crossbuild-essential-arm64 \
+	kmod \
 	binutils \
 	bzip2 \
 	xz-utils \
