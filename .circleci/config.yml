@@ -16,4 +16,4 @@ jobs:
           echo "GID=$(id -g)" >> ./docker/.env
           cd ./docker
           docker-compose build --no-cache
-          docker-compose -f ./docker-compose.yml run --rm --exit-code devel-rpi-aarch64
+          docker-compose -f ./docker-compose.yml run --rm devel-rpi-aarch64
