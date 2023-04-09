@@ -15,4 +15,5 @@ jobs:
           echo "UID=$(id -u)" > ./docker/.env
           echo "GID=$(id -g)" >> ./docker/.env
           cd ./docker
-          docker-compose up --exit-code-from linux-devel-rpi3b
+          docker-compose build --no-cache
+          docker-compose -f ./docker-compose.yml run --rm --exit-code devel-rpi-aarch64
