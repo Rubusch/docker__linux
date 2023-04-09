@@ -38,7 +38,12 @@ The setup needs a **gmail email address** for patch delivery via ``git send-emai
 
 ## Usage
 
-First usage and automated build.sh execution:  
+```
+$ cd docker
+$ docker-compose -f ./docker-compose.yml run --rm linux
+```
+
+Build manually:  
 
 ```
 $ cd docker
