@@ -43,10 +43,9 @@ First usage and automated build.sh execution:
 ```
 $ cd docker
 $ docker-compose -f ./docker-compose.yml run --rm devel-rpi-aarch64
-docker$ build.sh
 ```
 
-Login to containter:  
+Build manually:  
 
 ```
 $ cd docker
