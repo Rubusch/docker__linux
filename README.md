@@ -51,7 +51,7 @@ $ docker-compose -f ./docker-compose.yml run --rm linux /bin/bash
 docker$ build.sh
 ```
 
-## Cleanup
+## Issues
 
 Remove orphaned containers  
 ```
@@ -82,3 +82,14 @@ $ docker-compose ps
 ```
 
 For more consult the specific help and manpages.  
+
+
+issue: getcwd: cannot access parent directories  
+
+```
+$ build.sh
+    + 00_devenv.sh /home/user/workspace /home/user/configs
+    shell-init: error retrieving current directory: getcwd: cannot access parent directories: No such file or directory
+```
+fix: change to ``/home/<user>``, then execute build.sh  
+
