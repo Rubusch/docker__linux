@@ -32,13 +32,11 @@ $ echo "GID=$(id -g)" >> ./.env
 $ docker-compose build --no-cache
 ```
 
-**NOTE** After first run, go to ``docker/secrets/.gitconfig`` or in the container ``/home/USER/.gitconfig`` (same file), and fill out what is missing.  
+**NOTE** After first run, go to ``./docker/build_configs/.gitconfig`` or ``<docker>/home/USER/.gitconfig`` (same file, linked into the container) and fill out what is missing.  
 
 The setup needs a **gmail email address** for patch delivery via ``git send-email``. Many other email providers are possible in general, too  
 
 ## Usage
-
-First usage and automated build.sh execution:  
 
 ```
 $ cd docker
@@ -50,10 +48,10 @@ Build manually:
 ```
 $ cd docker
 $ docker-compose -f ./docker-compose.yml run --rm devel-rpi-aarch64 /bin/bash
-docker$
+docker$ build.sh
 ```
 
-## Cleanup
+## Issues
 
 Remove orphaned containers  
 ```
@@ -74,7 +72,7 @@ Remove an docker image
 ```
 $ docker images
     REPOSITORY               TAG        IMAGE ID       CREATED         SIZE
-    user/devel-rpi-aarch64   20211028   8b0855782faf   11 months ago   2.99GB
+    user/linux               20211028   8b0855782faf   11 months ago   2.99GB
 $ docker rmi -f 8b0855782faf
 ```
 
@@ -85,10 +83,7 @@ $ docker-compose ps
 
 For more consult the specific help and manpages.  
 
-
-## Issues
-
-issue
+issue: getcwd: cannot access parent directories  
 
 ```
 $ build.sh
