@@ -21,6 +21,7 @@ RUN apt-get update && apt-get autoremove -y --purge
 
 ## development
 RUN apt-get install -y \
+	debhelper \
 	binutils \
 	bzip2 \
 	xz-utils \
