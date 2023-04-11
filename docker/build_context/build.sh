@@ -4,7 +4,7 @@ export MY_HOME="/home/${MY_USER}"
 export WORKSPACE_DIR="${MY_HOME}/workspace"
 export SOURCES_DIR="${WORKSPACE_DIR}/linux"
 export CONFIGS_DIR="${MY_HOME}/configs"
-export LINUX_BRANCH="rpi-5.15.y"
+export LINUX_BRANCH="rpi-6.3.y"
 
 ## prepare
 00_devenv.sh "${WORKSPACE_DIR}" "${CONFIGS_DIR}"
