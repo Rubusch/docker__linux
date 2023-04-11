@@ -23,6 +23,7 @@ RUN apt-get update && apt-get autoremove -y --purge
 RUN apt-get install -y \
 	crossbuild-essential-armhf \
 	kmod \
+	debhelper \
 	binutils \
 	bzip2 \
 	xz-utils \
