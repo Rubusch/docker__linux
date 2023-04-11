@@ -29,7 +29,7 @@ set hlsearch
 " show matching ()'s []'s {}'s
 set sm
 
-" tabs are 4 spaces long
+" tabs are x spaces long
 set tabstop=8
 
 " when autoindent does a tab
@@ -168,6 +168,12 @@ set wrapmargin=1
 
 " writebackup
 set nowritebackup
+
+" select current dir as default when opening the explorer (:Ex)
+set autochdir
+
+" don't do .swp files all over the place
+set noswapfile
 
 " syntax highlighting
 syntax on
