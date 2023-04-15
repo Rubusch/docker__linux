@@ -51,6 +51,27 @@ $ docker-compose -f ./docker-compose.yml run --rm devel-rpi-aarch64 /bin/bash
 docker$ build.sh
 ```
 
+## Manual Linux Installation on the RPI
+
+ref: https://www.raspberrypi.com/documentation/computers/linux_kernel.html  
+
+The build will try to build .deb packages, anyway manually the installation for the RPI should be as follows.  
+```
+# make -j4 Image.gz modules dtbs
+# sudo make modules_install
+# sudo cp arch/arm64/boot/dts/broadcom/*.dtb /boot/
+# sudo cp arch/arm64/boot/dts/overlays/*.dtb* /boot/overlays/
+# sudo cp arch/arm64/boot/dts/overlays/README /boot/overlays/
+# sudo cp arch/arm64/boot/Image.gz /boot/$KERNEL.img
+```
+
+NB: configure to boot the specific kernel in "/boot/config.txt", i.e. set a name in the kernel config  
+```
+$ sudo vi /boot/config.txt
+    kernel=kernel-demo.img
+```
+
+
 ## Issues
 
 Remove orphaned containers  
