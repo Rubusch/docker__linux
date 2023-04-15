@@ -5,6 +5,10 @@ export WORKSPACE_DIR="${MY_HOME}/workspace"
 export SOURCES_DIR="${WORKSPACE_DIR}/linux"
 export CONFIGS_DIR="${MY_HOME}/configs"
 export LINUX_BRANCH="rpi-6.3.y"
+export CROSS_COMPILE="aarch64-linux-gnu-"
+export ARCH="arm64"
+export KERNEL="kernel8"
+export KDEFCONFIG_NAME="bcm2711_defconfig"
 
 ## prepare
 00_devenv.sh "${WORKSPACE_DIR}" "${CONFIGS_DIR}"
@@ -15,14 +19,8 @@ export LINUX_BRANCH="rpi-6.3.y"
 ## rpi toolchain
 20_rpi-tools.sh "${WORKSPACE_DIR}/tools"
 
-## development
+## prepare sources, configure DT, run build and crate TAGS
 90_devel-preparation.sh "${SOURCES_DIR}"
-
-## build / clean
-cd "${SOURCES_DIR}"
-make clean
-#make ${KDEFCONFIG_NAME}
-#make -j16 deb-pkg
 
 echo "READY."
 echo

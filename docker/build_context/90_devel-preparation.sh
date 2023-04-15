@@ -13,7 +13,7 @@ cd "${SOURCES_DIR}"
 source ${WORKSPACE_DIR}/source-me.sh
 
 ## prepare sources
-make bcm2711_defconfig
+make ${KDEFCONFIG_NAME}
 
 ## build
 make -j4 Image.gz modules dtbs
@@ -29,16 +29,3 @@ make tags
 echo "#!/bin/sh" > "${SOURCES_DIR}/.git/hooks/post-commit"
 echo "exec git show --format=email HEAD | ./scripts/checkpatch.pl --strict --codespell" >> "${SOURCES_DIR}/.git/hooks/post-commit"
 chmod a+x "${SOURCES_DIR}/.git/hooks/post-commit"
-
-
-## manual installation then follows (on the target)
-##
-#make -j4 Image.gz modules dtbs
-#sudo make modules_install
-#sudo cp arch/arm64/boot/dts/broadcom/*.dtb /boot/
-#sudo cp arch/arm64/boot/dts/overlays/*.dtb* /boot/overlays/
-#sudo cp arch/arm64/boot/dts/overlays/README /boot/overlays/
-#sudo cp arch/arm64/boot/Image.gz /boot/$KERNEL.img
-#
-## NB: configure to boot the specific kernel in "/boot/config.txt", i.e. set a name in the kernel config
-#kernel=kernel-demo.img
