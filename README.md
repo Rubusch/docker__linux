@@ -68,9 +68,11 @@ The build will try to build .deb packages, anyway manually the installation for 
 NB: configure to boot the specific kernel in "/boot/config.txt", i.e. set a name in the kernel config  
 ```
 $ sudo vi /boot/config.txt
-    kernel=kernel-demo.img
+    ...
+    [pi4]
+    kernel=vmlinuz-6.3.0-rc6-v8+
+    ...
 ```
-
 
 ## Issues
 
