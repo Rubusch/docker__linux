@@ -42,6 +42,7 @@ RUN apt-get install -y \
 	libtool \
 	libtool-bin \
 	make \
+	cmake \
 	libncurses5-dev \
 	openssl \
 	zlib1g-dev \
@@ -71,6 +72,7 @@ RUN apt-get install -y \
 	libsdl1.2-dev \
 	libelf-dev \
 	python3-all \
+	python3-dev \
 	psmisc \
 	udev \
 	hdparm \
@@ -98,7 +100,9 @@ RUN apt-get install -y \
 	emacs-goodies-el \
 	emacs-goodies-extra-el \
 	exuberant-ctags \
-	vim
+	vim \
+	vim-addon-manager \
+	vim-youcompleteme
 
 ## special - git
 RUN apt-get install -y git-all
@@ -166,6 +170,7 @@ RUN rm -f /home/$USER/.bashrc && ln -s ${MY_CONFIGS}/.bashrc /home/$USER/
 
 ## vim config
 RUN rm -f /home/$USER/.vimrc && ln -s ${MY_CONFIGS}/.vimrc /home/$USER/
+RUN vim-addon-manager install youcompleteme
 
 ## emacs config
 RUN rm -f /home/$USER/.emacs && ln -s ${MY_CONFIGS}/.emacs /home/$USER/
