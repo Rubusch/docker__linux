@@ -19,6 +19,8 @@ services:
           - USER
         env_file:
           - .env
+        group_add:
+          - 20                  ## dialout
         volumes:
         ## folders not need to be around
         #  - ~/.gitconfig:/home/${USER}/.gitconfig

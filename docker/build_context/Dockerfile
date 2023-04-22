@@ -133,7 +133,6 @@ RUN chown -R "${USER}":"${USER}" /usr/local
 RUN mkdir -p /opt
 RUN chown -R "${USER}":"${USER}" /opt
 RUN adduser "$USER" sudo
-RUN adduser "$USER" dialout
 
 ################################################################################
 ## tftp server
