@@ -115,3 +115,19 @@ $ build.sh
 ```
 fix: change to ``/home/<user>``, then execute build.sh  
 
+
+issue: uses unknown compression for member 'control.tar.zst', giving up
+$ dpkg -i foo.deb
+
+fix: re-pack .deb file to use xz instead of zstd, example
+```
+$ mkdir deb-temp
+$ cd deb-temp
+$ ar x ../some.deb
+$ zstd -d *.zst
+$ rm *.zst
+$ xz *.tar
+$ ar r ../some.deb debian-binary control.tar.xz data.tar.xz
+$ cd ..
+$ dpkg -i ./some.deb
+```
