@@ -122,3 +122,9 @@ fi
 if [[ -z "$(echo ${PATH} | grep '/usr/sbin')" ]]; then
     export PATH=${PATH}:/usr/sbin
 fi
+
+## source environment if available
+if [[ -e "~/workspace/source-me.sh" ]]; then
+    . ~/workspace/source-me.sh
+fi
+
