@@ -2,7 +2,7 @@
 ## ATTENTION: standalone container
 ##
 ################################################################################
-FROM ubuntu:22.04 AS ubu2204
+FROM ubuntu:20.04 AS ubu2004
 MAINTAINER Lothar Rubusch <l.rubusch@gmail.com>
 ENV DEBIAN_FRONTEND=noninteractive
 
