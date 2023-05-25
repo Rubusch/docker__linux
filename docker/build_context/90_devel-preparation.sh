@@ -16,10 +16,10 @@ source ${WORKSPACE_DIR}/source-me.sh
 make ${KDEFCONFIG_NAME}
 
 ## build
-make -j4 Image.gz modules dtbs
+#make -j4 Image.gz modules dtbs
 
-## make debian package with kernel and modules (will be in upper directory)
-make bindeb-pkg
+## build - make debian package with kernel and modules (will be in upper directory)
+make -j4 bindeb-pkg
 
 ## generate TAGS
 rm -f ./TAGS
