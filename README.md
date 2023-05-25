@@ -106,7 +106,7 @@ $ docker-compose ps
 
 For more consult the specific help and manpages.  
 
-issue: getcwd: cannot access parent directories  
+#### issue: getcwd: cannot access parent directories  
 
 ```
 $ build.sh
@@ -116,10 +116,12 @@ $ build.sh
 fix: change to ``/home/<user>``, then execute build.sh  
 
 
-issue: uses unknown compression for member 'control.tar.zst', giving up
+#### issue: uses unknown compression for member 'control.tar.zst', giving up   
+```
 $ dpkg -i foo.deb
+```
 
-fix: re-pack .deb file to use xz instead of zstd, example
+fix: re-pack .deb file to use xz instead of zstd, example  
 ```
 $ mkdir deb-temp
 $ cd deb-temp
@@ -131,3 +133,17 @@ $ ar r ../some.deb debian-binary control.tar.xz data.tar.xz
 $ cd ..
 $ dpkg -i ./some.deb
 ```
+
+
+#### issue: won't compile due to GLIBC version
+
+When compiling out-of-source kernel modules the compilation of the module stops with an error similar
+
+```
+/lib/x86_64-linux-gnu/libc.so.6: version `GLIBC_2.33' not found
+/lib/x86_64-linux-gnu/libc.so.6: version `GLIBC_2.34' not found
+```
+
+fix: issue due to build artifacts of different toolchain
+
+Typically this happens for the tools around the kernel sources, when building the docker container on ubu 22.04 (GLIBC_2.35 or around), then compiling the kernel source and switching to another container build on 20.04 (GLIBC_2.31) e.g. because RPI3b needs GLIBC_2.31 for userspace stuff. The solution is re-build the linux sources with the current toolchain.
