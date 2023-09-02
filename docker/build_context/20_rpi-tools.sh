@@ -1,7 +1,6 @@
 #!/bin/sh -e
-##
 ## toolchain setup
-##
+
 if [ ! -e "${WORKSPACE_DIR}/source-me.sh" ]; then
 	echo "export CROSS_COMPILE=${CROSS_COMPILE}" > ${WORKSPACE_DIR}/source-me.sh
 	echo "export ARCH=${ARCH}" >> ${WORKSPACE_DIR}/source-me.sh

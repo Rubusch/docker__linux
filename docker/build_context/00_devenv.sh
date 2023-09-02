@@ -1,5 +1,6 @@
 #!/bin/sh -e
 ## basic setup, fix/check permissions and ssh known_hosts
+## setup build config
 ##
 ## call, optionally with additionally mounted folders:
 ## $0 <folder1> <folder2>...
@@ -27,3 +28,50 @@ for item in "github.com" "bitbucket.org"; do
         ssh-keyscan "${item}" >> "${SSH_KNOWN_HOSTS}"
     fi
 done
+
+## prepare machine config, in case source the file
+if [ ! -e "${WORKSPACE_DIR}/machine.conf" ]; then
+     cat<<EOF > "${WORKSPACE_DIR}/machine.conf"
+## rpi4 (64)
+## ref: https://www.raspberrypi.com/documentation/computers/linux_kernel.html
+export LINUX_BRANCH="rpi-6.3.y"
+export CROSS_COMPILE="aarch64-linux-gnu-"
+export ARCH="arm64"
+export KERNEL="kernel8"
+export KDEFCONFIG_NAME="bcm2711_defconfig"
+export KERNEL_URL="https://github.com/raspberrypi/linux"
+
+## rpi3b (32)
+#export LINUX_BRANCH="rpi-6.3.y"
+#export CROSS_COMPILE=TODO
+#export ARCH=TODO
+#export KERNEL=TODO
+#export KDEFCONFIG_NAME="bcm2709_defconfig"
+
+## linux kernel staging (patches) - gkh
+#export LINUX_BRANCH=TODO
+#export CROSS_COMPILE=TODO
+#export ARCH=TODO
+#export KERNEL=TODO
+#export KDEFCONFIG_NAME=TODO
+#export KERNEL_URL="git://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git"
+
+## linux kernel staging (patches) - thorvalds
+#export LINUX_BRANCH=TODO
+#export CROSS_COMPILE=TODO
+#export ARCH=TODO
+#export KERNEL=TODO
+#export KDEFCONFIG_NAME=TODO
+#export KERNEL_URL="git://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git"
+
+## linux kernel next (testing) - kernel.org
+#export LINUX_BRANCH=TODO
+#export CROSS_COMPILE=TODO
+#export ARCH=TODO
+#export KERNEL=TODO
+#export KDEFCONFIG_NAME=TODO
+#export KERNEL_URL="git://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git"
+EOF
+fi
+
+source "${WORKSPACE_DIR}/machine.conf"

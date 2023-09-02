@@ -1,7 +1,6 @@
 #!/bin/sh -e
-##
 ## development tools setup
-## ref: https://www.raspberrypi.com/documentation/computers/linux_kernel.html
+
 SOURCES_DIR="${1}"
 if [ ! -d "${SOURCES_DIR}" ]; then
     echo "FAIL: no linux sources available in '${SOURCES_DIR}'"

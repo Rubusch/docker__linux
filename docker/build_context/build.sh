@@ -4,11 +4,6 @@ export MY_HOME="/home/${MY_USER}"
 export WORKSPACE_DIR="${MY_HOME}/workspace"
 export SOURCES_DIR="${WORKSPACE_DIR}/linux"
 export CONFIGS_DIR="${MY_HOME}/configs"
-export LINUX_BRANCH="rpi-6.3.y"
-export CROSS_COMPILE="aarch64-linux-gnu-"
-export ARCH="arm64"
-export KERNEL="kernel8"
-export KDEFCONFIG_NAME="bcm2711_defconfig"
 
 ## prepare
 00_devenv.sh "${WORKSPACE_DIR}" "${CONFIGS_DIR}"
