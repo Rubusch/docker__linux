@@ -43,9 +43,9 @@ export KERNEL_URL="https://github.com/raspberrypi/linux"
 
 ## rpi3b (32)
 #export LINUX_BRANCH="rpi-6.3.y"
-#export CROSS_COMPILE=TODO
-#export ARCH=TODO
-#export KERNEL=TODO
+#export CROSS_COMPILE="arm-linux-gnueabihf-"
+#export ARCH="arm"
+#export KERNEL="kernel7"
 #export KDEFCONFIG_NAME="bcm2709_defconfig"
 
 ## linux kernel staging (patches) - gkh
