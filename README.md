@@ -2,7 +2,7 @@
 [![License: GPL v2](https://img.shields.io/badge/License-GPL%20v2-blue.svg)](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html)
 
 
-# Docker: linux for patches
+# Docker: linux for development
 
 The container is a standalone container and builds on ubuntu standard containers.  
 
@@ -40,18 +40,18 @@ The setup needs a **gmail email address** for patch delivery via ``git send-emai
 
 ```
 $ cd docker
-$ docker-compose -f ./docker-compose.yml run --rm devel-rpi-aarch64
+$ docker-compose -f ./docker-compose.yml run --rm linux-develop
 ```
 
 Build manually:  
 
 ```
 $ cd docker
-$ docker-compose -f ./docker-compose.yml run --rm devel-rpi-aarch64 /bin/bash
+$ docker-compose -f ./docker-compose.yml run --rm linux-develop /bin/bash
 docker$ build.sh
 ```
 
-## Manual Linux Installation on the RPI
+## RPI: Manual Linux Installation on the RPI
 
 ref: https://www.raspberrypi.com/documentation/computers/linux_kernel.html  
 

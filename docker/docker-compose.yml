@@ -1,9 +1,9 @@
 version: '3.8'
 
 services:
-    devel-linux:
-        container_name: devel-linux
-        image: ${USER}/devel-linux
+    linux-develop:
+        container_name: linux-develop
+        image: ${USER}/linux-develop
         build:
             context: build_context
             dockerfile: Dockerfile
