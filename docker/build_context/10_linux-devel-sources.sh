@@ -10,6 +10,7 @@ if [ -d "${SOURCES_DIR}" ]; then
 else
     cd "${WORKSPACE_DIR}"
     git clone -j "$(nproc)" --depth=1 --branch "$LINUX_BRANCH" $KERNEL_URL "linux_${CROSS_COMPILE}${LINUX_BRANCH}"
+    ln -s "linux_${CROSS_COMPILE}${LINUX_BRANCH}" "$SOURCES_DIR"
 fi
 
 if [ ! -d "${SOURCES_DIR}" ]; then
