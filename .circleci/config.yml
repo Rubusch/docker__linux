@@ -19,4 +19,4 @@ jobs:
           ## active (takes time)
           #docker-compose -f ./docker-compose.yml run --rm linux-develop
           ## passive/dry-run
-          docker-compose -f ./docker-compose.yml run --rm linux-develop /etc/issue
+          docker-compose -f ./docker-compose.yml run --rm linux-develop /usr/bin/date
