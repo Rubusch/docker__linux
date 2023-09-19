@@ -13,43 +13,44 @@ if [ ! -e "${WORKSPACE_DIR}/machine.conf" ]; then
      cat<<EOF > "${WORKSPACE_DIR}/machine.conf"
 ## rpi4 (64)
 ## ref: https://www.raspberrypi.com/documentation/computers/linux_kernel.html
+export KERNEL_URL="https://github.com/raspberrypi/linux"
 export LINUX_BRANCH="rpi-6.3.y"
+export KDEFCONFIG_NAME="bcm2711_defconfig"
 export CROSS_COMPILE="aarch64-linux-gnu-"
 export ARCH="arm64"
 export KERNEL="kernel8"
-export KDEFCONFIG_NAME="bcm2711_defconfig"
-export KERNEL_URL="https://github.com/raspberrypi/linux"
 
 ## rpi3b (32)
+#export KERNEL_URL="https://github.com/raspberrypi/linux"
 #export LINUX_BRANCH="rpi-6.3.y"
+#export KDEFCONFIG_NAME="bcm2709_defconfig"
 #export CROSS_COMPILE="arm-linux-gnueabihf-"
 #export ARCH="arm"
 #export KERNEL="kernel7"
-#export KDEFCONFIG_NAME="bcm2709_defconfig"
 
 ## linux kernel staging (patches) - gkh
+#export KERNEL_URL="git://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git"
 #export LINUX_BRANCH=TODO
+#export KDEFCONFIG_NAME=TODO
 #export CROSS_COMPILE=TODO
 #export ARCH=TODO
 #export KERNEL=TODO
-#export KDEFCONFIG_NAME=TODO
-#export KERNEL_URL="git://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git"
 
 ## linux kernel staging (patches) - thorvalds
+#export KERNEL_URL="git://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git"
 #export LINUX_BRANCH=TODO
+#export KDEFCONFIG_NAME=TODO
 #export CROSS_COMPILE=TODO
 #export ARCH=TODO
 #export KERNEL=TODO
-#export KDEFCONFIG_NAME=TODO
-#export KERNEL_URL="git://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git"
 
 ## linux kernel next (testing) - kernel.org
+#export KERNEL_URL="git://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git"
 #export LINUX_BRANCH=TODO
+#export KDEFCONFIG_NAME=TODO
 #export CROSS_COMPILE=TODO
 #export ARCH=TODO
 #export KERNEL=TODO
-#export KDEFCONFIG_NAME=TODO
-#export KERNEL_URL="git://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git"
 EOF
 fi
 source "${WORKSPACE_DIR}/machine.conf"
