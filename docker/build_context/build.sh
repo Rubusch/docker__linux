@@ -19,6 +19,7 @@ export KDEFCONFIG_NAME="bcm2711_defconfig"
 export CROSS_COMPILE="aarch64-linux-gnu-"
 export ARCH="arm64"
 export KERNEL="kernel8"
+export BUILD_TARGETS="Image modules dtbs"
 
 ## rpi3b (32)
 #export KERNEL_URL="https://github.com/raspberrypi/linux"
@@ -27,6 +28,7 @@ export KERNEL="kernel8"
 #export CROSS_COMPILE="arm-linux-gnueabihf-"
 #export ARCH="arm"
 #export KERNEL="kernel7"
+#export BUILD_TARGETS="zImage modules dtbs"
 
 ## linux kernel staging (patches) - gkh
 #export KERNEL_URL="git://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git"
@@ -35,6 +37,7 @@ export KERNEL="kernel8"
 #export CROSS_COMPILE=TODO
 #export ARCH=TODO
 #export KERNEL=TODO
+#export BUILD_TARGETS="bindeb-pkg modules dtbs"
 
 ## linux kernel staging (patches) - thorvalds
 #export KERNEL_URL="git://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git"
@@ -43,6 +46,7 @@ export KERNEL="kernel8"
 #export CROSS_COMPILE=TODO
 #export ARCH=TODO
 #export KERNEL=TODO
+#export BUILD_TARGETS="bindeb-pkg modules dtbs"
 
 ## linux kernel next (testing) - kernel.org
 #export KERNEL_URL="git://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git"
@@ -51,6 +55,7 @@ export KERNEL="kernel8"
 #export CROSS_COMPILE=TODO
 #export ARCH=TODO
 #export KERNEL=TODO
+#export BUILD_TARGETS="bindeb-pkg modules dtbs"
 EOF
 fi
 source "${WORKSPACE_DIR}/machine.conf"

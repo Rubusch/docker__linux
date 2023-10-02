@@ -32,6 +32,7 @@ $ echo "GID=$(id -g)" >> ./.env
 $ docker-compose build --no-cache
 ```
 
+
 **NOTE** After first run, go to ``./docker/build_configs/.gitconfig`` or ``<docker>/home/USER/.gitconfig`` (same file, linked into the container) and fill out what is missing.  
 
 The setup needs a **gmail email address** for patch delivery via ``git send-email``. Many other email providers are possible in general, too  
