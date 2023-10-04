@@ -13,3 +13,6 @@ linux-defconfigs
 
 ## docker environment
 .env
+
+## gitconfig, checked in, should not be tracked further
+docker/build_configs/.gitconfig

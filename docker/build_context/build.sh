@@ -61,13 +61,13 @@ fi
 source "${WORKSPACE_DIR}/machine.conf"
 
 ## get sources
-10_linux-devel-sources.sh "${SOURCES_DIR}"
+10_fetch-sources.sh "${SOURCES_DIR}"
 
 ## rpi toolchain
-20_rpi-tools.sh "${WORKSPACE_DIR}/tools"
+20_prepare-source-me.sh "${WORKSPACE_DIR}/tools"
 
 ## prepare sources, configure DT, run build and crate TAGS
-90_devel-preparation.sh "${SOURCES_DIR}"
+30_build-sources.sh "${SOURCES_DIR}"
 
 echo "READY."
 echo

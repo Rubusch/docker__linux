@@ -187,6 +187,10 @@ RUN mkdir -p /home/$USER/.ssh
 ################################################################################
 ## apt
 USER root
+
+## prepare /usr/src/linux as dead link
+RUN rm -f /usr/src/linux && ln -s /home/$USER/workspace/linux /usr/src/linux
+
 RUN apt-get update && apt-get autoremove -y --purge
 RUN apt-get install -y latexmk
 RUN apt-get install -y librsvg2-bin
