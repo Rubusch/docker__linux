@@ -14,7 +14,7 @@ if [ ! -e "${WORKSPACE_DIR}/machine.conf" ]; then
 ## rpi4 (64)
 ## ref: https://www.raspberrypi.com/documentation/computers/linux_kernel.html
 export KERNEL_URL="https://github.com/raspberrypi/linux"
-export LINUX_BRANCH="rpi-6.3.y"
+export LINUX_BRANCH="rpi-6.6.y"
 export KDEFCONFIG_NAME="bcm2711_defconfig"
 export CROSS_COMPILE="aarch64-linux-gnu-"
 export ARCH="arm64"
@@ -31,6 +31,7 @@ export BUILD_TARGETS="Image modules dtbs"
 #export BUILD_TARGETS="zImage modules dtbs"
 
 ## linux kernel staging (patches) - gkh
+## https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git
 #export KERNEL_URL="git://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git"
 #export LINUX_BRANCH=TODO
 #export KDEFCONFIG_NAME=TODO
