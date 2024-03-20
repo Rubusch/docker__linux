@@ -3,6 +3,7 @@
 *#
 *.orig
 *.swp
+*.modif
 
 ## ignore output folder
 workspace
