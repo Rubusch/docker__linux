@@ -1,16 +1,1 @@
-[user]
-   name = YOUR NAME
-   email = YOUR.EMAIL@EXAMPLE.COM
-[sendemail]
-   from = YOUR NAME <YOUR.EMAIL@gmail.com>
-   smtpserver = smtp.gmail.com
-   smtpuser = YOUR.EMAIL@gmail.com
-   smtpencryption = tls
-   smtppass = PASSWORD123
-   chainreplyto = false
-   smtpserverport = 587
-[alias]
-   st = status
-   ci = commit
-   co = checkout
-   br = branch
+.gitconfig.modif
