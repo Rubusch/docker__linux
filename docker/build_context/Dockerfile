@@ -82,6 +82,7 @@ RUN apt-get install -y \
 	device-tree-compiler \
 	i2c-tools \
 	mtd-utils \
+	gpiod \
 	perl \
 	python3 \
 	python3-pip \
