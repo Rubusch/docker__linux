@@ -83,6 +83,7 @@ RUN apt-get install -y \
 	i2c-tools \
 	mtd-utils \
 	gpiod \
+	libgpiod-dev \
 	perl \
 	python3 \
 	python3-pip \
