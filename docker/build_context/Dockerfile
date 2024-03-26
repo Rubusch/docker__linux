@@ -2,7 +2,7 @@
 ## ATTENTION: standalone container
 ##
 ################################################################################
-FROM ubuntu:20.04 AS ubu2004
+FROM ubuntu:22.04
 MAINTAINER Lothar Rubusch <l.rubusch@gmail.com>
 ENV DEBIAN_FRONTEND=noninteractive
 
@@ -227,5 +227,5 @@ RUN ln -s /usr/lib/python3/dist-packages/codespell_lib/data/dictionary.txt /usr/
 ## command mode
 USER ${USER}
 WORKDIR /home/$USER
-COPY *.sh /usr/local/bin/
+COPY --from=context *.sh /usr/local/bin/
 CMD ["/bin/bash", "/usr/local/bin/build.sh"]
